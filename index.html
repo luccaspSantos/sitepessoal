@@ -49,21 +49,22 @@
     .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
     .hero-content { display: flex; align-items: center; gap: 3rem; }
     .hero-text { flex: 1; min-width: 0; }
-    .hero-impact {
-      font-size: clamp(1rem, 2.4vw, 1.35rem);
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 1.25rem;
-      max-width: 34rem;
-      border-left: 3px solid var(--accent);
-      padding-left: 1rem;
+
+    /* Foto + frase abaixo */
+    .hero-visual { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+    .hero-photo { position: relative; width: 260px; height: 260px; }
+    .hero-tagline {
+      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.45;
+      color: var(--muted);
+      text-align: center;
+      max-width: 17rem;
+      margin: 0;
     }
-    .hero-impact .accent { color: var(--accent); font-weight: 700; }
 
     /* Photo */
-    .hero-photo { flex-shrink: 0; position: relative; width: 260px; height: 260px; }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid rgba(0,212,255,0.35); box-shadow: 0 0 50px rgba(0,212,255,0.18), 0 0 100px rgba(0,212,255,0.07); display: block; }
     .hero-photo::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; border: 1px solid rgba(0,212,255,0.12); }
     .hero-photo::after { content: ''; position: absolute; inset: -18px; border-radius: 50%; border: 1px dashed rgba(0,212,255,0.06); animation: spin 30s linear infinite; }
@@ -200,7 +201,8 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero-content { flex-direction: column-reverse; align-items: flex-start; gap: 2rem; }
-      .hero-photo { width: 180px; height: 180px; align-self: center; }
+      .hero-visual { align-self: center; width: 100%; }
+      .hero-photo { width: 180px; height: 180px; }
       .corcovado-container { width: 100%; height: 70%; opacity: 0.5; }
     }
     @media (max-width: 768px) {
@@ -310,7 +312,6 @@
     <div class="hero-inner">
       <div class="hero-content">
         <div class="hero-text">
-          <p class="hero-impact fade-in" data-i18n-html="hero_impact"><span class="accent">$40M+</span> in business impact — AI agents in production, not experiments.</p>
           <div class="hero-tag" data-i18n="hero_tag">Available for projects · Rio de Janeiro, Brazil</div>
           <h1 class="hero-name">Luccas<br><span>Santos</span></h1>
           <p class="hero-subtitle" data-i18n="hero_subtitle">Head of Data Science & AI &nbsp;·&nbsp; LLMs · RAG · MLOps · AI Agents</p>
@@ -340,8 +341,11 @@
             <a href="#contato" class="btn btn-outline" data-i18n="hero_btn2">Get in Touch</a>
           </div>
         </div>
-        <div class="hero-photo">
-          <img src="image.png" alt="Luccas Santos" />
+        <div class="hero-visual">
+          <div class="hero-photo">
+            <img src="image.png" alt="Luccas Santos" />
+          </div>
+          <p class="hero-tagline fade-in" data-i18n="hero_impact">Transformando complexidade em clareza e dados em direção.</p>
         </div>
       </div>
     </div>
@@ -633,7 +637,7 @@
       en: {
         nav_about:'About', nav_projects:'Projects', nav_experience:'Experience', nav_skills:'Skills', nav_chat:'AI Chat', nav_contact:'Contact',
         hero_tag:'Available for projects · Rio de Janeiro, Brazil',
-        hero_impact:'<span class="accent">$40M+</span> in business impact — AI agents in production, not experiments.',
+        hero_impact:'Turning complexity into clarity and data into direction.',
         hero_subtitle:'Head of Data Science & AI \u00b7 LLMs · RAG · MLOps · AI Agents',
         hero_m1:'Business Impact', hero_m2:'People Led', hero_m3:'Years of Experience', hero_m4:'Faster ML Cycles',
         hero_btn1:'View AI Projects', hero_btn2:'Get in Touch',
@@ -673,7 +677,7 @@
       pt: {
         nav_about:'Sobre', nav_projects:'Projetos', nav_experience:'Experiência', nav_skills:'Habilidades', nav_chat:'Chat AI', nav_contact:'Contato',
         hero_tag:'Disponível para projetos · Rio de Janeiro, Brasil',
-        hero_impact:'<span class="accent">US$ 40M+</span> de impacto em negócios — agentes de IA em produção, não em experimentos.',
+        hero_impact:'Transformando complexidade em clareza e dados em direção.',
         hero_subtitle:'Head of Data Science & AI \u00b7 LLMs · RAG · MLOps · AI Agents',
         hero_m1:'Impacto Recuperado', hero_m2:'Pessoas Lideradas', hero_m3:'Anos de Experiência', hero_m4:'Redução em Ciclos ML',
         hero_btn1:'Ver Projetos de IA', hero_btn2:'Entrar em Contato',
@@ -713,7 +717,7 @@
       es: {
         nav_about:'Sobre', nav_projects:'Proyectos', nav_experience:'Experiencia', nav_skills:'Habilidades', nav_chat:'Chat IA', nav_contact:'Contacto',
         hero_tag:'Disponible para proyectos · Río de Janeiro, Brasil',
-        hero_impact:'<span class="accent">US$ 40M+</span> de impacto en el negocio — agentes de IA en producción, no en experimentos.',
+        hero_impact:'Transformando la complejidad en claridad y los datos en dirección.',
         hero_subtitle:'Head of Data Science & AI \u00b7 LLMs · RAG · MLOps · AI Agents',
         hero_m1:'Impacto Recuperado', hero_m2:'Personas Lideradas', hero_m3:'Años de Experiencia', hero_m4:'Reducción en Ciclos ML',
         hero_btn1:'Ver Proyectos de IA', hero_btn2:'Ponerse en Contacto',
