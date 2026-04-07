@@ -54,13 +54,13 @@
     .hero-visual { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
     .hero-photo { position: relative; width: 260px; height: 260px; }
     .hero-tagline {
-      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
       font-weight: 500;
       letter-spacing: -0.02em;
       line-height: 1.45;
       color: var(--muted);
       text-align: center;
-      max-width: 17rem;
+      max-width: 22rem;
       margin: 0;
     }
 
@@ -69,10 +69,6 @@
     .hero-photo::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; border: 1px solid rgba(0,212,255,0.12); }
     .hero-photo::after { content: ''; position: absolute; inset: -18px; border-radius: 50%; border: 1px dashed rgba(0,212,255,0.06); animation: spin 30s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 999px; padding: 0.35rem 1rem; font-size: 0.8rem; color: var(--accent); margin-bottom: 2rem; }
-    .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
     .hero-name { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.05; margin-bottom: 1.25rem; }
     .hero-name span { color: var(--accent); }
@@ -94,6 +90,18 @@
     .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .sobre-text p { color: var(--muted); margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.8; }
     .sobre-text p strong { color: var(--text); }
+    .sobre-details { margin-top: 1.5rem; grid-column: 1 / -1; max-width: 100%; }
+    .sobre-details summary {
+      list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.875rem; font-weight: 600; color: var(--accent);
+      padding: 0.5rem 0; user-select: none;
+    }
+    .sobre-details summary::-webkit-details-marker { display: none; }
+    .sobre-details summary::after { content: '▸'; font-size: 0.65rem; opacity: 0.8; transition: transform 0.2s; }
+    .sobre-details[open] summary::after { transform: rotate(90deg); }
+    .sobre-details .sobre-profile-inner { margin-top: 1rem; padding: 1.25rem 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
+    .sobre-details .sobre-profile-inner p { margin-bottom: 1rem; font-size: 0.95rem; }
+    .sobre-details .sobre-profile-inner p:last-child { margin-bottom: 0; }
     .sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
     .stat-card .num { font-size: 2rem; font-weight: 800; color: var(--accent); letter-spacing: -1px; margin-bottom: 0.25rem; }
@@ -312,7 +320,6 @@
     <div class="hero-inner">
       <div class="hero-content">
         <div class="hero-text">
-          <div class="hero-tag" data-i18n="hero_tag">Available for projects · Rio de Janeiro, Brazil</div>
           <h1 class="hero-name">Luccas<br><span>Santos</span></h1>
           <p class="hero-subtitle" data-i18n="hero_subtitle">Head of Data Science & AI &nbsp;·&nbsp; LLMs · RAG · MLOps · AI Agents</p>
           <div class="hero-metrics">
@@ -359,9 +366,9 @@
       <div class="sobre-grid">
         <div class="sobre-text fade-in">
           <p data-i18n-html="about_p1">I am a <strong>Statistician from ENCE/IBGE</strong> and a Master's candidate in Economics & Finance at <strong>FGV</strong>, with 14 years of experience across telecom, finance, insurance, retail and oil & gas.</p>
-          <p data-i18n-html="about_p2">I lead data science and AI teams focused on <strong>measurable business impact</strong> — not just models, but solutions that reach production and generate real value.</p>
+          <p data-i18n-html="about_p2">I lead data science and AI teams focused on <strong>measurable business impact</strong>, not just models, but solutions that reach production and generate real value.</p>
           <p data-i18n-html="about_p3">I architect solutions with <strong>LangChain, LlamaIndex and CrewAI</strong>, implementing RAG, LoRA fine-tuning and multi-agent systems. Deployed via <strong>Docker/Kubernetes on AKS</strong>, integrated with WhatsApp, Microsoft Teams and ERPs.</p>
-          <p data-i18n="about_p4">I believe the best AI is the one the end user doesn't even notice — they simply find that problems disappear.</p>
+          <p data-i18n="about_p4">I believe the best AI is the one the end user doesn't even notice: they simply find that problems disappear.</p>
         </div>
         <div class="sobre-stats fade-in">
           <div class="stat-card">
@@ -381,6 +388,10 @@
             <div class="label" data-i18n="about_s4">Absolute return on quant strategies at B3</div>
           </div>
         </div>
+        <details class="sobre-details fade-in">
+          <summary data-i18n="about_summary">Full profile description (LinkedIn). Click to expand or minimize.</summary>
+          <div class="sobre-profile-inner" data-i18n-html="about_profile"></div>
+        </details>
       </div>
     </div>
   </section>
@@ -611,9 +622,9 @@
           <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
           <div class="contact-info"><div class="type" data-i18n="c_email">Email</div><div class="value">luccas_p.santos@yahoo.com.br</div></div>
         </a>
-        <a href="https://linkedin.com/in/luccaspsantos" target="_blank" rel="noopener" class="contact-card fade-in">
+        <a href="https://www.linkedin.com/in/luccas-psantos/" target="_blank" rel="noopener" class="contact-card fade-in">
           <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
-          <div class="contact-info"><div class="type">LinkedIn</div><div class="value">luccaspsantos</div></div>
+          <div class="contact-info"><div class="type">LinkedIn</div><div class="value">luccas-psantos</div></div>
         </a>
         <a href="https://github.com/luccaspSantos" target="_blank" rel="noopener" class="contact-card fade-in">
           <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
@@ -636,16 +647,17 @@
     const i18n = {
       en: {
         nav_about:'About', nav_projects:'Projects', nav_experience:'Experience', nav_skills:'Skills', nav_chat:'AI Chat', nav_contact:'Contact',
-        hero_tag:'Available for projects · Rio de Janeiro, Brazil',
         hero_impact:'Turning complexity into clarity and data into direction.',
         hero_subtitle:'Head of Data Science & AI \u00b7 LLMs · RAG · MLOps · AI Agents',
         hero_m1:'Business Impact', hero_m2:'People Led', hero_m3:'Years of Experience', hero_m4:'Faster ML Cycles',
         hero_btn1:'View AI Projects', hero_btn2:'Get in Touch',
         about_label:'About', about_h2:'Who I am',
+        about_summary:'Full profile description (LinkedIn). Click to expand or minimize.',
+        about_profile:'<p>Over the past 5 years, I have led a 25-person Data Science &amp; AI team that recovered ~$40M USD in telecom billing gaps, reduced churn by 10%, and cut delinquency by 15%. We achieved a 50% compression in ML delivery cycles by orchestrating a full migration from legacy SAS pipelines to a production-grade multi-agent LLMOps architecture.</p><p>I architect solutions using LangChain, LlamaIndex, CrewAI, and RAG pipelines, including fine-tuned LLMs with LoRA on domain-specific data. My current stack leverages multi-agent orchestration, vector databases, and inference optimization deployed via Docker on AKS, integrated directly with enterprise ecosystems (WhatsApp, Teams, ERPs).</p><p><strong>Projects shipped in production:</strong> B2B Contract Intelligence Agent (LlamaIndex + hallucination checks): cut contract review time by 75%, reduced compliance risk. Data Science Ecosystem Agent (multi-agent LangChain): generates Python code, structures MLOps pipelines, validates logs; reduced delivery cycles by 50%. Dataframe Analytics Agent: LLM-powered insights on WhatsApp and Teams, turning days-long decisions into real-time actions. Telecom Sales &amp; Recommendation Agent: LLM + recommender system, driving personalized offers at scale.</p><p><strong>Background:</strong> B.Sc. in Statistics (ENCE/IBGE) and Master\'s in Economics &amp; Finance (FGV, currently completing). 14 years across telecom, financial services, insurance, retail, and oil &amp; gas.</p>',
         about_p1:'I am a <strong>Statistician from ENCE/IBGE</strong> and a Master\'s candidate in Economics & Finance at <strong>FGV</strong>, with 14 years of experience across telecom, finance, insurance, retail and oil & gas.',
-        about_p2:'I lead data science and AI teams focused on <strong>measurable business impact</strong> — not just models, but solutions that reach production and generate real value.',
+        about_p2:'I lead data science and AI teams focused on <strong>measurable business impact</strong>, not just models, but solutions that reach production and generate real value.',
         about_p3:'I architect solutions with <strong>LangChain, LlamaIndex and CrewAI</strong>, implementing RAG, LoRA fine-tuning and multi-agent systems. Deployed via <strong>Docker/Kubernetes on AKS</strong>, integrated with WhatsApp, Microsoft Teams and ERPs.',
-        about_p4:'I believe the best AI is the one the end user doesn\'t even notice — they simply find that problems disappear.',
+        about_p4:'I believe the best AI is the one the end user doesn\'t even notice: they simply find that problems disappear.',
         about_s1:'B2B/B2C billing gaps recovered', about_s2:'Acceleration in judicial rulings with AI', about_s3:'Churn reduction in telecom', about_s4:'Absolute return on quant strategies at B3',
         proj_label:'Projects', proj_h2:'AI in Production',
         p1_title:'B2B Contract Intelligence Agent', p1_desc:'Contract analysis agent with LlamaIndex and hallucination validation. Processes complex legal documents and automatically flags compliance risks.', p1_impact:'75% less review time · lower compliance risk',
@@ -676,16 +688,17 @@
       },
       pt: {
         nav_about:'Sobre', nav_projects:'Projetos', nav_experience:'Experiência', nav_skills:'Habilidades', nav_chat:'Chat AI', nav_contact:'Contato',
-        hero_tag:'Disponível para projetos · Rio de Janeiro, Brasil',
         hero_impact:'Transformando complexidade em clareza e dados em direção.',
         hero_subtitle:'Head of Data Science & AI \u00b7 LLMs · RAG · MLOps · AI Agents',
         hero_m1:'Impacto Recuperado', hero_m2:'Pessoas Lideradas', hero_m3:'Anos de Experiência', hero_m4:'Redução em Ciclos ML',
         hero_btn1:'Ver Projetos de IA', hero_btn2:'Entrar em Contato',
         about_label:'Sobre', about_h2:'Quem sou eu',
+        about_summary:'Descrição completa do perfil (LinkedIn). Clique para expandir ou minimizar.',
+        about_profile:'<p>Nos últimos 5 anos, liderei um time de 25 pessoas em Data Science e IA que recuperou cerca de US$ 40 milhões em gaps de faturamento em telecom, reduziu churn em 10% e inadimplência em 15%. Alcançamos 50% de compressão nos ciclos de entrega de ML ao orquestrar a migração completa de pipelines SAS legados para uma arquitetura LLMOps multiagente em nível de produção.</p><p>Arquiteto soluções com LangChain, LlamaIndex, CrewAI e pipelines RAG, incluindo LLMs com fine-tuning LoRA em dados de domínio. O stack atual usa orquestração multiagente, bancos vetoriais e otimização de inferência em Docker no AKS, integrado a ecossistemas corporativos (WhatsApp, Teams, ERPs).</p><p><strong>Projetos em produção:</strong> B2B Contract Intelligence Agent (LlamaIndex + validação de alucinações): 75% menos tempo de revisão de contratos e menor risco de compliance. Data Science Ecosystem Agent (LangChain multiagente): gera código Python, estrutura pipelines MLOps, valida logs; 50% menos tempo de entrega. Dataframe Analytics Agent: insights via LLM no WhatsApp e Teams, decisões de dias em tempo real. Telecom Sales &amp; Recommendation Agent: LLM + recomendador, ofertas personalizadas em escala.</p><p><strong>Formação:</strong> Bacharelado em Estatística (ENCE/IBGE) e Mestrado em Economia &amp; Finanças (FGV, em conclusão). 14 anos em telecom, serviços financeiros, seguros, varejo e petróleo &amp; gás.</p>',
         about_p1:'Sou <strong>Estatístico formado pela ENCE/IBGE</strong> e mestrando em Economia & Finanças na <strong>FGV</strong>, com 14 anos de experiência em telecom, finanças, seguros, varejo e petróleo & gás.',
-        about_p2:'Lidero times de ciência de dados e IA com foco em <strong>impacto de negócio mensurável</strong> — não apenas modelos, mas soluções que chegam à produção e geram valor real.',
+        about_p2:'Lidero times de ciência de dados e IA com foco em <strong>impacto de negócio mensurável</strong>, não apenas modelos, mas soluções que chegam à produção e geram valor real.',
         about_p3:'Arquiteto soluções com <strong>LangChain, LlamaIndex e CrewAI</strong>, implementando RAG, fine-tuning com LoRA e sistemas multi-agente. Deploy via <strong>Docker/Kubernetes no AKS</strong>, integrado a WhatsApp, Microsoft Teams e ERPs.',
-        about_p4:'Acredito que a melhor IA é aquela que o usuário final nem percebe — apenas constata que os problemas desaparecem.',
+        about_p4:'Acredito que a melhor IA é aquela que o usuário final nem percebe: apenas constata que os problemas desaparecem.',
         about_s1:'Gaps de faturamento B2B/B2C recuperados', about_s2:'Aceleração em julgamentos judiciais com IA', about_s3:'Redução de churn em telecomunicações', about_s4:'Retorno absoluto em estratégias quant na B3',
         proj_label:'Projetos', proj_h2:'IA em Produção',
         p1_title:'B2B Contract Intelligence Agent', p1_desc:'Agente de análise de contratos com LlamaIndex e validação de alucinações. Processa documentos jurídicos complexos e sinaliza riscos de compliance automaticamente.', p1_impact:'75% menos tempo de revisão · menor risco de compliance',
@@ -716,16 +729,17 @@
       },
       es: {
         nav_about:'Sobre', nav_projects:'Proyectos', nav_experience:'Experiencia', nav_skills:'Habilidades', nav_chat:'Chat IA', nav_contact:'Contacto',
-        hero_tag:'Disponible para proyectos · Río de Janeiro, Brasil',
         hero_impact:'Transformando la complejidad en claridad y los datos en dirección.',
         hero_subtitle:'Head of Data Science & AI \u00b7 LLMs · RAG · MLOps · AI Agents',
         hero_m1:'Impacto Recuperado', hero_m2:'Personas Lideradas', hero_m3:'Años de Experiencia', hero_m4:'Reducción en Ciclos ML',
         hero_btn1:'Ver Proyectos de IA', hero_btn2:'Ponerse en Contacto',
         about_label:'Sobre', about_h2:'Quién soy',
+        about_summary:'Descripción completa del perfil (LinkedIn). Pulse para expandir o minimizar.',
+        about_profile:'<p>En los últimos 5 años, lideré un equipo de 25 personas en Data Science e IA que recuperó ~US$ 40M en brechas de facturación de telecom, redujo el churn en 10% y la morosidad en 15%. Logramos una compresión del 50% en los ciclos de entrega de ML al orquestar la migración completa de pipelines SAS heredados a una arquitectura LLMOps multiagente en producción.</p><p>Diseño soluciones con LangChain, LlamaIndex, CrewAI y pipelines RAG, incluidos LLMs fine-tuned con LoRA sobre datos de dominio. El stack actual aprovecha orquestación multiagente, bases vectoriales y optimización de inferencia en Docker sobre AKS, integrado con ecosistemas empresariales (WhatsApp, Teams, ERPs).</p><p><strong>Proyectos en producción:</strong> B2B Contract Intelligence Agent (LlamaIndex + validación de alucinaciones): 75% menos tiempo de revisión de contratos y menor riesgo de compliance. Data Science Ecosystem Agent (LangChain multiagente): genera código Python, estructura pipelines MLOps, valida logs; 50% menos tiempo de entrega. Dataframe Analytics Agent: insights con LLM en WhatsApp y Teams, decisiones de días en tiempo real. Telecom Sales &amp; Recommendation Agent: LLM + recomendador, ofertas personalizadas a escala.</p><p><strong>Formación:</strong> Licenciatura en Estadística (ENCE/IBGE) y Maestría en Economía &amp; Finanzas (FGV, en curso). 14 años en telecom, servicios financieros, seguros, retail y petróleo &amp; gas.</p>',
         about_p1:'Soy <strong>Estadístico por la ENCE/IBGE</strong> y Maestrando en Economía & Finanzas en la <strong>FGV</strong>, con 14 años de experiencia en telecom, finanzas, seguros, retail y petróleo & gas.',
-        about_p2:'Lidero equipos de ciencia de datos e IA con foco en <strong>impacto de negocio medible</strong> — no solo modelos, sino soluciones que llegan a producción y generan valor real.',
+        about_p2:'Lidero equipos de ciencia de datos e IA con foco en <strong>impacto de negocio medible</strong>, no solo modelos, sino soluciones que llegan a producción y generan valor real.',
         about_p3:'Diseño soluciones con <strong>LangChain, LlamaIndex y CrewAI</strong>, implementando RAG, fine-tuning con LoRA y sistemas multi-agente. Despliegue via <strong>Docker/Kubernetes en AKS</strong>, integrado con WhatsApp, Microsoft Teams y ERPs.',
-        about_p4:'Creo que la mejor IA es la que el usuario final ni percibe — solo constata que los problemas desaparecen.',
+        about_p4:'Creo que la mejor IA es la que el usuario final ni percibe: solo constata que los problemas desaparecen.',
         about_s1:'Brechas de facturación B2B/B2C recuperadas', about_s2:'Aceleración en fallos judiciales con IA', about_s3:'Reducción de churn en telecomunicaciones', about_s4:'Retorno absoluto en estrategias cuant en B3',
         proj_label:'Proyectos', proj_h2:'IA en Producción',
         p1_title:'B2B Contract Intelligence Agent', p1_desc:'Agente de análisis de contratos con LlamaIndex y validación de alucinaciones. Procesa documentos jurídicos complejos y señala riesgos de compliance automáticamente.', p1_impact:'75% menos tiempo de revisión · menor riesgo de compliance',
@@ -814,7 +828,7 @@
 IDENTITY:
 - Name: Luccas Santos | Head of Data Science & AI
 - Location: Rio de Janeiro, Brazil
-- Email: luccas_p.santos@yahoo.com.br | LinkedIn: linkedin.com/in/luccaspsantos | GitHub: github.com/luccaspSantos | Phone: +55 21 99229-2029
+- Email: luccas_p.santos@yahoo.com.br | LinkedIn: www.linkedin.com/in/luccas-psantos/ | GitHub: github.com/luccaspSantos | Phone: +55 21 99229-2029
 
 EDUCATION:
 - Statistician from ENCE/IBGE
