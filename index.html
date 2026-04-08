@@ -123,21 +123,26 @@
 
     /* ── EXPERIÊNCIA ── */
     #experiencia { background: var(--bg2); }
-    .exp-item-summary {
-      list-style: none; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem;
-      padding: 0 0 0.25rem 0; user-select: none;
+    .timeline-lead { font-size: 0.875rem; color: var(--muted); line-height: 1.75; margin-bottom: 0.75rem; }
+    .timeline-lead p { margin: 0; }
+    #experiencia .exp-stack { margin-bottom: 0.85rem; }
+    #experiencia .exp-stack .tag {
+      background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.35); color: var(--accent);
+      border-radius: 8px; padding: 0.28rem 0.7rem; font-size: 0.72rem; font-weight: 500;
     }
-    .exp-item-summary::-webkit-details-marker { display: none; }
-    .exp-item-summary::marker { content: ''; }
-    .exp-item-summary-text { flex: 1; min-width: 0; }
-    .exp-item-summary .timeline-company { margin-bottom: 0; }
-    .exp-item-chevron {
-      flex-shrink: 0; width: 1.5rem; height: 1.5rem; display: flex; align-items: center; justify-content: center;
-      font-size: 0.65rem; color: var(--accent); border: 1px solid rgba(0,212,255,0.25); border-radius: 6px;
-      margin-top: 0.15rem; transition: transform 0.2s, background 0.2s;
+    .exp-more-summary {
+      list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; font-weight: 600; color: var(--accent); padding: 0.35rem 0; user-select: none; margin-top: 0.15rem;
     }
-    .exp-item-details[open] .exp-item-chevron { transform: rotate(90deg); background: rgba(0,212,255,0.06); }
-    .timeline-body-rich { font-size: 0.875rem; color: var(--muted); line-height: 1.75; padding-top: 0.75rem; }
+    .exp-more-summary::-webkit-details-marker { display: none; }
+    .exp-more-summary::marker { content: ''; }
+    .exp-more-chevron {
+      display: inline-flex; align-items: center; justify-content: center; width: 1.35rem; height: 1.35rem;
+      font-size: 0.6rem; border: 1px solid rgba(0,212,255,0.3); border-radius: 6px; transition: transform 0.2s, background 0.2s;
+    }
+    .exp-item-details[open] .exp-more-chevron { transform: rotate(90deg); background: rgba(0,212,255,0.08); }
+    .exp-item-details .timeline-body-rich { padding-top: 0.5rem; }
+    .timeline-body-rich { font-size: 0.875rem; color: var(--muted); line-height: 1.75; }
     .timeline-body-rich p { margin-bottom: 0.75rem; }
     .timeline-body-rich p:last-child { margin-bottom: 0; }
     .timeline-body-rich ul { margin: 0.35rem 0 0.85rem 1.15rem; padding: 0; }
@@ -474,138 +479,120 @@
       <h2 class="fade-in" data-i18n="exp_h2">Professional Experience</h2>
       <div class="timeline">
         <div class="timeline-item fade-in">
-          <details class="exp-item-details" open>
-            <summary class="exp-item-summary">
-              <div class="exp-item-summary-text">
-                <div class="timeline-header">
-                  <div class="timeline-title" data-i18n="e1_title">Head of Data Science & AI</div>
-                  <div class="timeline-period" data-i18n="e1_period">Jan 2022 · Present</div>
-                </div>
-                <div class="timeline-company" data-i18n="e1_co">Analysis</div>
-              </div>
-              <span class="exp-item-chevron" aria-hidden="true">▸</span>
-            </summary>
-            <div class="timeline-body-rich" data-i18n-html="e1_body"></div>
+          <div class="timeline-header">
+            <div class="timeline-title" data-i18n="e1_title">Head of Data Science & AI</div>
+            <div class="timeline-period" data-i18n="e1_period">Jan 2022 · Present</div>
+          </div>
+          <div class="timeline-company" data-i18n="e1_co">Analysis</div>
+          <div class="timeline-lead" data-i18n-html="e1_lead"></div>
+          <div class="stack-list exp-stack" data-i18n-html="e1_tags"></div>
+          <details class="exp-item-details">
+            <summary class="exp-more-summary"><span data-i18n="exp_more">More details</span><span class="exp-more-chevron" aria-hidden="true">▸</span></summary>
+            <div class="timeline-body-rich" data-i18n-html="e1_rest"></div>
           </details>
         </div>
         <div class="timeline-item fade-in">
-          <details class="exp-item-details" open>
-            <summary class="exp-item-summary">
-              <div class="exp-item-summary-text">
-                <div class="timeline-header">
-                  <div class="timeline-title" data-i18n="e2_title">Head of Innovation and Modeling</div>
-                  <div class="timeline-period" data-i18n="e2_period">Jan 2021 · Jan 2022</div>
-                </div>
-                <div class="timeline-company" data-i18n="e2_co">Analysis</div>
-              </div>
-              <span class="exp-item-chevron" aria-hidden="true">▸</span>
-            </summary>
-            <div class="timeline-body-rich" data-i18n-html="e2_body"></div>
+          <div class="timeline-header">
+            <div class="timeline-title" data-i18n="e2_title">Head of Innovation and Modeling</div>
+            <div class="timeline-period" data-i18n="e2_period">Jan 2021 · Jan 2022</div>
+          </div>
+          <div class="timeline-company" data-i18n="e2_co">Analysis</div>
+          <div class="timeline-lead" data-i18n-html="e2_lead"></div>
+          <div class="stack-list exp-stack" data-i18n-html="e2_tags"></div>
+          <details class="exp-item-details">
+            <summary class="exp-more-summary"><span data-i18n="exp_more">More details</span><span class="exp-more-chevron" aria-hidden="true">▸</span></summary>
+            <div class="timeline-body-rich" data-i18n-html="e2_rest"></div>
           </details>
         </div>
         <div class="timeline-item fade-in">
-          <details class="exp-item-details" open>
-            <summary class="exp-item-summary">
-              <div class="exp-item-summary-text">
-                <div class="timeline-header">
-                  <div class="timeline-title" data-i18n="e3_title">Senior Analyst – Data Scientist</div>
-                  <div class="timeline-period" data-i18n="e3_period">Dec 2019 · Dec 2020</div>
-                </div>
-                <div class="timeline-company" data-i18n="e3_co">TC · Rio de Janeiro, Brazil</div>
-              </div>
-              <span class="exp-item-chevron" aria-hidden="true">▸</span>
-            </summary>
-            <div class="timeline-body-rich" data-i18n-html="e3_body"></div>
+          <div class="timeline-header">
+            <div class="timeline-title" data-i18n="e3_title">Senior Analyst – Data Scientist</div>
+            <div class="timeline-period" data-i18n="e3_period">Dec 2019 · Dec 2020</div>
+          </div>
+          <div class="timeline-company" data-i18n="e3_co">TC · Rio de Janeiro, Brazil</div>
+          <div class="timeline-lead" data-i18n-html="e3_lead"></div>
+          <div class="stack-list exp-stack" data-i18n-html="e3_tags"></div>
+          <details class="exp-item-details">
+            <summary class="exp-more-summary"><span data-i18n="exp_more">More details</span><span class="exp-more-chevron" aria-hidden="true">▸</span></summary>
+            <div class="timeline-body-rich" data-i18n-html="e3_rest"></div>
           </details>
         </div>
         <div class="timeline-item fade-in">
-          <details class="exp-item-details" open>
-            <summary class="exp-item-summary">
-              <div class="exp-item-summary-text">
-                <div class="timeline-header">
-                  <div class="timeline-title" data-i18n="e4_title">Customer Relations Specialist</div>
-                  <div class="timeline-period" data-i18n="e4_period">Jan 2019 · Dec 2019</div>
-                </div>
-                <div class="timeline-company" data-i18n="e4_co">TIM Brasil · Rio de Janeiro</div>
-              </div>
-              <span class="exp-item-chevron" aria-hidden="true">▸</span>
-            </summary>
-            <div class="timeline-body-rich" data-i18n-html="e4_body"></div>
+          <div class="timeline-header">
+            <div class="timeline-title" data-i18n="e4_title">Customer Relations Specialist</div>
+            <div class="timeline-period" data-i18n="e4_period">Jan 2019 · Dec 2019</div>
+          </div>
+          <div class="timeline-company" data-i18n="e4_co">TIM Brasil · Rio de Janeiro</div>
+          <div class="timeline-lead" data-i18n-html="e4_lead"></div>
+          <div class="stack-list exp-stack" data-i18n-html="e4_tags"></div>
+          <details class="exp-item-details">
+            <summary class="exp-more-summary"><span data-i18n="exp_more">More details</span><span class="exp-more-chevron" aria-hidden="true">▸</span></summary>
+            <div class="timeline-body-rich" data-i18n-html="e4_rest"></div>
           </details>
         </div>
         <div class="timeline-item fade-in">
-          <details class="exp-item-details" open>
-            <summary class="exp-item-summary">
-              <div class="exp-item-summary-text">
-                <div class="timeline-header">
-                  <div class="timeline-title" data-i18n="e5_title">Senior Analyst</div>
-                  <div class="timeline-period" data-i18n="e5_period">Jan 2016 · Feb 2018</div>
-                </div>
-                <div class="timeline-company" data-i18n="e5_co">Analysis</div>
-              </div>
-              <span class="exp-item-chevron" aria-hidden="true">▸</span>
-            </summary>
-            <div class="timeline-body-rich" data-i18n-html="e5_body"></div>
+          <div class="timeline-header">
+            <div class="timeline-title" data-i18n="e5_title">Senior Analyst</div>
+            <div class="timeline-period" data-i18n="e5_period">Jan 2016 · Feb 2018</div>
+          </div>
+          <div class="timeline-company" data-i18n="e5_co">Analysis</div>
+          <div class="timeline-lead" data-i18n-html="e5_lead"></div>
+          <div class="stack-list exp-stack" data-i18n-html="e5_tags"></div>
+          <details class="exp-item-details">
+            <summary class="exp-more-summary"><span data-i18n="exp_more">More details</span><span class="exp-more-chevron" aria-hidden="true">▸</span></summary>
+            <div class="timeline-body-rich" data-i18n-html="e5_rest"></div>
           </details>
         </div>
         <div class="timeline-item fade-in">
-          <details class="exp-item-details" open>
-            <summary class="exp-item-summary">
-              <div class="exp-item-summary-text">
-                <div class="timeline-header">
-                  <div class="timeline-title" data-i18n="e6_title">Mid Data Science</div>
-                  <div class="timeline-period" data-i18n="e6_period">Jul 2014 · Jan 2016</div>
-                </div>
-                <div class="timeline-company" data-i18n="e6_co">Analysis</div>
-              </div>
-              <span class="exp-item-chevron" aria-hidden="true">▸</span>
-            </summary>
-            <div class="timeline-body-rich" data-i18n-html="e6_body"></div>
+          <div class="timeline-header">
+            <div class="timeline-title" data-i18n="e6_title">Mid Data Science</div>
+            <div class="timeline-period" data-i18n="e6_period">Jul 2014 · Jan 2016</div>
+          </div>
+          <div class="timeline-company" data-i18n="e6_co">Analysis</div>
+          <div class="timeline-lead" data-i18n-html="e6_lead"></div>
+          <div class="stack-list exp-stack" data-i18n-html="e6_tags"></div>
+          <details class="exp-item-details">
+            <summary class="exp-more-summary"><span data-i18n="exp_more">More details</span><span class="exp-more-chevron" aria-hidden="true">▸</span></summary>
+            <div class="timeline-body-rich" data-i18n-html="e6_rest"></div>
           </details>
         </div>
         <div class="timeline-item fade-in">
-          <details class="exp-item-details" open>
-            <summary class="exp-item-summary">
-              <div class="exp-item-summary-text">
-                <div class="timeline-header">
-                  <div class="timeline-title" data-i18n="e7_title">Junior Analyst</div>
-                  <div class="timeline-period" data-i18n="e7_period">Jun 2013 · Jul 2014</div>
-                </div>
-                <div class="timeline-company" data-i18n="e7_co">Analysis</div>
-              </div>
-              <span class="exp-item-chevron" aria-hidden="true">▸</span>
-            </summary>
-            <div class="timeline-body-rich" data-i18n-html="e7_body"></div>
+          <div class="timeline-header">
+            <div class="timeline-title" data-i18n="e7_title">Junior Analyst</div>
+            <div class="timeline-period" data-i18n="e7_period">Jun 2013 · Jul 2014</div>
+          </div>
+          <div class="timeline-company" data-i18n="e7_co">Analysis</div>
+          <div class="timeline-lead" data-i18n-html="e7_lead"></div>
+          <div class="stack-list exp-stack" data-i18n-html="e7_tags"></div>
+          <details class="exp-item-details">
+            <summary class="exp-more-summary"><span data-i18n="exp_more">More details</span><span class="exp-more-chevron" aria-hidden="true">▸</span></summary>
+            <div class="timeline-body-rich" data-i18n-html="e7_rest"></div>
           </details>
         </div>
         <div class="timeline-item fade-in">
-          <details class="exp-item-details" open>
-            <summary class="exp-item-summary">
-              <div class="exp-item-summary-text">
-                <div class="timeline-header">
-                  <div class="timeline-title" data-i18n="e8_title">Junior Technical Analyst</div>
-                  <div class="timeline-period" data-i18n="e8_period">Jun 2012 · Jan 2013</div>
-                </div>
-                <div class="timeline-company" data-i18n="e8_co">Generali Brasil Seguros · Greater Rio de Janeiro</div>
-              </div>
-              <span class="exp-item-chevron" aria-hidden="true">▸</span>
-            </summary>
-            <div class="timeline-body-rich" data-i18n-html="e8_body"></div>
+          <div class="timeline-header">
+            <div class="timeline-title" data-i18n="e8_title">Junior Technical Analyst</div>
+            <div class="timeline-period" data-i18n="e8_period">Jun 2012 · Jan 2013</div>
+          </div>
+          <div class="timeline-company" data-i18n="e8_co">Generali Brasil Seguros · Greater Rio de Janeiro</div>
+          <div class="timeline-lead" data-i18n-html="e8_lead"></div>
+          <div class="stack-list exp-stack" data-i18n-html="e8_tags"></div>
+          <details class="exp-item-details">
+            <summary class="exp-more-summary"><span data-i18n="exp_more">More details</span><span class="exp-more-chevron" aria-hidden="true">▸</span></summary>
+            <div class="timeline-body-rich" data-i18n-html="e8_rest"></div>
           </details>
         </div>
         <div class="timeline-item fade-in">
-          <details class="exp-item-details" open>
-            <summary class="exp-item-summary">
-              <div class="exp-item-summary-text">
-                <div class="timeline-header">
-                  <div class="timeline-title" data-i18n="e9_title">Intern</div>
-                  <div class="timeline-period" data-i18n="e9_period">Jun 2011 · Jun 2012</div>
-                </div>
-                <div class="timeline-company" data-i18n="e9_co">Generali Brasil Seguros</div>
-              </div>
-              <span class="exp-item-chevron" aria-hidden="true">▸</span>
-            </summary>
-            <div class="timeline-body-rich" data-i18n-html="e9_body"></div>
+          <div class="timeline-header">
+            <div class="timeline-title" data-i18n="e9_title">Intern</div>
+            <div class="timeline-period" data-i18n="e9_period">Jun 2011 · Jun 2012</div>
+          </div>
+          <div class="timeline-company" data-i18n="e9_co">Generali Brasil Seguros</div>
+          <div class="timeline-lead" data-i18n-html="e9_lead"></div>
+          <div class="stack-list exp-stack" data-i18n-html="e9_tags"></div>
+          <details class="exp-item-details">
+            <summary class="exp-more-summary"><span data-i18n="exp_more">More details</span><span class="exp-more-chevron" aria-hidden="true">▸</span></summary>
+            <div class="timeline-body-rich" data-i18n-html="e9_rest"></div>
           </details>
         </div>
       </div>
@@ -748,25 +735,43 @@
         p2_title:'Data Science Ecosystem Agent', p2_desc:'Multi-agent system with LangChain that generates Python code, structures MLOps pipelines and validates execution logs. Automates the full model development cycle.', p2_impact:'50% faster model delivery',
         p3_title:'Dataframe Analytics Agent', p3_desc:'LLM via LangChain delivering analytical insights directly on WhatsApp and Microsoft Teams. Decisions that took days become real-time actions for managers.', p3_impact:'Days-long decisions become real-time actions',
         p4_title:'Telecom Sales & Recommendation Agent', p4_desc:'System combining LLM with a recommendation engine to generate personalized offers at scale for telecom customers. Maximizes cross-sell and up-sell opportunities.', p4_impact:'Personalized offers at scale',
-        exp_label:'Journey', exp_h2:'Professional Experience',
+        exp_label:'Journey', exp_h2:'Professional Experience', exp_more:'More details',
         e1_title:'Head of Data Science & AI', e1_period:'Jan 2022 · Present', e1_co:'Analysis',
-        e1_body:'<p>Led a 25-person multidisciplinary Data Science &amp; AI team, managing full-cycle delivery of predictive modeling, LLMOps pipelines, and AI Agents for enterprise clients in telecom, oil &amp; gas, and retail.</p><p><strong>Business Impact</strong></p><ul><li><strong>Revenue Recovery:</strong> Identified over $40M+ USD in billing gaps across B2B and B2C telecom clients, utilizing Machine Learning for large-scale billing audits.</li><li><strong>Operational Efficiency:</strong> Reduced customer delinquency by 15% and churn by 10% via ML-driven contact optimization and propensity modeling.</li><li><strong>Pipeline Automation:</strong> Re-engineered data pipelines, reducing processing time from 1.5 days to 3 hours (95% reduction) and compressing ML delivery cycles by 50%.</li><li><strong>Strategic Partnerships:</strong> Delivered fraud detection models for the Federal Revenue Service in partnership with SERPRO and SAS.</li></ul><p><strong>AI Agents (Production)</strong></p><ul><li>B2B Contract Intelligence Agent (LlamaIndex + Hallucination Validation): 75% reduction in contract review time, lower compliance risks.</li><li>Data Science Ecosystem Agent (Multi-agent LangChain): Python code generation, MLOps pipeline structuring, log validation; 50% faster time-to-market.</li><li>Dataframe Analytics Agent (LLMs via LangChain to WhatsApp/Teams): real-time executive insights from days-long manual analysis.</li><li>Telecom Sales &amp; Recommendation Agent: LLMs with recommendation systems for personalized offers at scale.</li></ul><p><strong>Stack:</strong> Python · LangChain · LlamaIndex · CrewAI · RAG · LoRA fine-tuning · MLOps · Docker · Kubernetes · AKS · SAS · SQL · R</p>',
+        e1_lead:'<p>Led a 25-person multidisciplinary Data Science &amp; AI team, managing full-cycle delivery of predictive modeling, LLMOps pipelines, and AI Agents for enterprise clients in telecom, oil &amp; gas, and retail.</p>',
+        e1_tags:'<span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">LlamaIndex</span><span class="tag">CrewAI</span><span class="tag">RAG</span><span class="tag">LoRA fine-tuning</span><span class="tag">MLOps</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AKS</span><span class="tag">SAS</span><span class="tag">SQL</span><span class="tag">R</span>',
+        e1_rest:'<p><strong>Business Impact</strong></p><ul><li><strong>Revenue Recovery:</strong> Identified over $40M+ USD in billing gaps across B2B and B2C telecom clients, utilizing Machine Learning for large-scale billing audits.</li><li><strong>Operational Efficiency:</strong> Reduced customer delinquency by 15% and churn by 10% via ML-driven contact optimization and propensity modeling.</li><li><strong>Pipeline Automation:</strong> Re-engineered data pipelines, reducing processing time from 1.5 days to 3 hours (95% reduction) and compressing ML delivery cycles by 50%.</li><li><strong>Strategic Partnerships:</strong> Delivered fraud detection models for the Federal Revenue Service in partnership with SERPRO and SAS.</li></ul><p><strong>AI Agents (Production)</strong></p><ul><li>B2B Contract Intelligence Agent (LlamaIndex + Hallucination Validation): 75% reduction in contract review time, lower compliance risks.</li><li>Data Science Ecosystem Agent (Multi-agent LangChain): Python code generation, MLOps pipeline structuring, log validation; 50% faster time-to-market.</li><li>Dataframe Analytics Agent (LLMs via LangChain to WhatsApp/Teams): real-time executive insights from days-long manual analysis.</li><li>Telecom Sales &amp; Recommendation Agent: LLMs with recommendation systems for personalized offers at scale.</li></ul>',
         e2_title:'Head of Innovation and Modeling', e2_period:'Jan 2021 · Jan 2022', e2_co:'Analysis',
-        e2_body:'<p>Directed strategic R&amp;D initiatives, bridging emerging AI research and functional business applications. Led a multidisciplinary team of 7 (Specialists, Analysts, and Interns) focused on high-risk, high-reward analytical projects.</p><p><strong>Key Responsibilities</strong></p><ul><li><strong>Applied AI Research:</strong> NLP and early-stage LLM architectures to automate complex unstructured data workflows.</li><li><strong>PoC Management:</strong> Full lifecycle of experimental models, from statistical hypothesis to validated functional prototypes.</li><li><strong>Cross-functional Leadership:</strong> Coordinated stakeholders and partners for process optimization through advanced modeling.</li></ul><p><strong>Results | Highlights</strong></p><ul><li><strong>LegalTech (Court of Auditors):</strong> End-to-end judicial automation: NLP for document parsing, key-point extraction, draft sentences; judgment cycle accelerated ~3x.</li><li><strong>Deep Learning for Revenue:</strong> Cross-sell and up-sell models with Deep Learning; new benchmark for propensity scores.</li><li><strong>Innovation Roadmap:</strong> Continuous improvement from traditional statistics to modern Deep Learning.</li></ul><p><strong>Technical Focus:</strong> NLP · Deep Learning · LLMs · Statistical Modeling · Prototyping · Python · Stakeholder Management</p>',
+        e2_lead:'<p>Directed strategic R&amp;D initiatives, bridging emerging AI research and functional business applications. Led a multidisciplinary team of 7 (Specialists, Analysts, and Interns) focused on high-risk, high-reward analytical projects.</p>',
+        e2_tags:'<span class="tag">NLP</span><span class="tag">Deep Learning</span><span class="tag">LLMs</span><span class="tag">Statistical Modeling</span><span class="tag">Prototyping</span><span class="tag">Python</span><span class="tag">Stakeholder Management</span>',
+        e2_rest:'<p><strong>Key Responsibilities</strong></p><ul><li><strong>Applied AI Research:</strong> NLP and early-stage LLM architectures to automate complex unstructured data workflows.</li><li><strong>PoC Management:</strong> Full lifecycle of experimental models, from statistical hypothesis to validated functional prototypes.</li><li><strong>Cross-functional Leadership:</strong> Coordinated stakeholders and partners for process optimization through advanced modeling.</li></ul><p><strong>Results | Highlights</strong></p><ul><li><strong>LegalTech (Court of Auditors):</strong> End-to-end judicial automation: NLP for document parsing, key-point extraction, draft sentences; judgment cycle accelerated ~3x.</li><li><strong>Deep Learning for Revenue:</strong> Cross-sell and up-sell models with Deep Learning; new benchmark for propensity scores.</li><li><strong>Innovation Roadmap:</strong> Continuous improvement from traditional statistics to modern Deep Learning.</li></ul>',
         e3_title:'Senior Analyst – Data Scientist', e3_period:'Dec 2019 · Dec 2020', e3_co:'TC · Rio de Janeiro, Brazil',
-        e3_body:'<p>Developed and deployed systematic quantitative strategies for the Brazilian equity market (B3), leveraging high-dimensional statistical modeling and collaborative cloud-native architectures (GCP) for institutional-grade performance.</p><p><strong>Key Responsibilities</strong></p><ul><li><strong>Volatility Modeling:</strong> GARCH/ARCH for conditional variance and risk-adjusted performance across horizons.</li><li><strong>Statistical Arbitrage:</strong> Cointegration-based pairs trading for liquid Brazilian equities.</li><li><strong>GCP DevOps:</strong> Scalable trading infrastructure with Cloud Run and Cloud Functions, real-time API management.</li><li><strong>Containerization &amp; CI/CD:</strong> Docker for T5, T30, T60 high-frequency signals.</li><li><strong>Backtesting:</strong> Transaction costs, slippage, Sharpe, Sortino, Max Drawdown, VaR.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Scaled automated models to monitor the B3 exchange with high-availability APIs.</li><li><strong>8% absolute return</strong> on the initial portfolio with strict risk controls.</li></ul><p><strong>Stack:</strong> Python (Pandas, Statsmodels, Arch) · GCP (Cloud Run, Functions) · Docker · SQL · ML · Time Series · Real-time APIs</p>',
+        e3_lead:'<p>Developed and deployed systematic quantitative strategies for the Brazilian equity market (B3), leveraging high-dimensional statistical modeling and collaborative cloud-native architectures (GCP) for institutional-grade performance.</p>',
+        e3_tags:'<span class="tag">Python</span><span class="tag">GCP</span><span class="tag">Docker</span><span class="tag">SQL</span><span class="tag">ML</span><span class="tag">Time Series</span><span class="tag">Real-time APIs</span>',
+        e3_rest:'<p><strong>Key Responsibilities</strong></p><ul><li><strong>Volatility Modeling:</strong> GARCH/ARCH for conditional variance and risk-adjusted performance across horizons.</li><li><strong>Statistical Arbitrage:</strong> Cointegration-based pairs trading for liquid Brazilian equities.</li><li><strong>GCP DevOps:</strong> Scalable trading infrastructure with Cloud Run and Cloud Functions, real-time API management.</li><li><strong>Containerization &amp; CI/CD:</strong> Docker for T5, T30, T60 high-frequency signals.</li><li><strong>Backtesting:</strong> Transaction costs, slippage, Sharpe, Sortino, Max Drawdown, VaR.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Scaled automated models to monitor the B3 exchange with high-availability APIs.</li><li><strong>8% absolute return</strong> on the initial portfolio with strict risk controls.</li></ul>',
         e4_title:'Customer Relations Specialist', e4_period:'Jan 2019 · Dec 2019', e4_co:'TIM Brasil · Rio de Janeiro',
-        e4_body:'<p>Led high-performance statistical and ML models to optimize credit recovery and mitigate delinquency; Python-driven collection strategies.</p><p><strong>Key Responsibilities</strong></p><ul><li>Gradient Boosting (XGBoost, LightGBM) for PD, Behavioral and Collection Scores.</li><li>PCL / PPD estimation aligned with financial reporting and provisioning.</li><li><strong>Genetic Algorithms:</strong> Optimization engine to prioritize channels and maximize recovery ROI.</li><li>Self-Cure models and segmented collection campaigns (contact sequence per profile).</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Improved PPD and delinquency forecasts vs. traditional statistics.</li><li>Reduced Roll Rate in critical aging buckets; real-time propensity scores for campaigns.</li></ul><p><strong>Technical Stack:</strong> Python (XGBoost, LightGBM, Scikit-Learn) · SQL · Genetic Algorithms · Behavior Scoring · PCL/PPD · Multivariate Statistics</p>',
+        e4_lead:'<p>Led high-performance statistical and ML models to optimize credit recovery and mitigate delinquency; Python-driven collection strategies.</p>',
+        e4_tags:'<span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span><span class="tag">Scikit-Learn</span><span class="tag">SQL</span><span class="tag">Genetic Algorithms</span><span class="tag">Behavior Scoring</span><span class="tag">PCL/PPD</span>',
+        e4_rest:'<p><strong>Key Responsibilities</strong></p><ul><li>Gradient Boosting (XGBoost, LightGBM) for PD, Behavioral and Collection Scores.</li><li>PCL / PPD estimation aligned with financial reporting and provisioning.</li><li><strong>Genetic Algorithms:</strong> Optimization engine to prioritize channels and maximize recovery ROI.</li><li>Self-Cure models and segmented collection campaigns (contact sequence per profile).</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Improved PPD and delinquency forecasts vs. traditional statistics.</li><li>Reduced Roll Rate in critical aging buckets; real-time propensity scores for campaigns.</li></ul>',
         e5_title:'Senior Analyst', e5_period:'Jan 2016 · Feb 2018', e5_co:'Analysis',
-        e5_body:'<p>High-impact analytics and strategic consulting for Oil &amp; Gas, Telecom, and Retail (Petrobras, Natura, GVT, TIM): research through production ML pipelines.</p><p><strong>Key Responsibilities</strong></p><ul><li>XGBoost, LightGBM, Random Forest predictive models.</li><li>Text Mining &amp; NLP for unstructured corporate data.</li><li>Early MLOps: reproducibility, versioning, deployment monitoring.</li><li>Multi-stack: SAS (Enterprise Guide/Miner), SQL Server, R, Python.</li><li>SAS Fraud Framework for transactional anomalies.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Migration from legacy SAS to scalable Python ML pipelines.</li><li>Churn/LTV for Telecom; predictive maintenance for Oil &amp; Gas.</li></ul><p><strong>Technical Stack:</strong> Python (XGBoost, LightGBM) · SAS (Fraud Framework, Miner, VA) · R · MLOps · SQL Server · Text Mining</p>',
+        e5_lead:'<p>High-impact analytics and strategic consulting for Oil &amp; Gas, Telecom, and Retail (Petrobras, Natura, GVT, TIM): research through production ML pipelines.</p>',
+        e5_tags:'<span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span><span class="tag">SAS Fraud Framework</span><span class="tag">SAS Miner</span><span class="tag">R</span><span class="tag">MLOps</span><span class="tag">SQL Server</span><span class="tag">Text Mining</span>',
+        e5_rest:'<p><strong>Key Responsibilities</strong></p><ul><li>XGBoost, LightGBM, Random Forest predictive models.</li><li>Text Mining &amp; NLP for unstructured corporate data.</li><li>Early MLOps: reproducibility, versioning, deployment monitoring.</li><li>Multi-stack: SAS (Enterprise Guide/Miner), SQL Server, R, Python.</li><li>SAS Fraud Framework for transactional anomalies.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Migration from legacy SAS to scalable Python ML pipelines.</li><li>Churn/LTV for Telecom; predictive maintenance for Oil &amp; Gas.</li></ul>',
         e6_title:'Mid Data Science', e6_period:'Jul 2014 · Jan 2016', e6_co:'Analysis',
-        e6_body:'<p>End-to-end predictive modeling and large-scale data processing for enterprise clients.</p><p><strong>Key Responsibilities</strong></p><ul><li>Predictive models, Text Mining, initial ML pipelines.</li><li>SQL Server and SAS (EG/Miner) data quality for analytical flows.</li><li>SAS Fraud Framework for risk mitigation.</li><li>EDA with R and Python; SAS Visual Analytics dashboards.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Streamlined extraction/reporting; Gradient Boosting improved churn and fraud models.</li></ul><p><strong>Technical Stack:</strong> SAS (EG, Miner, Fraud Framework) · Python · R · SQL Server · Text Mining · ML · Visualization</p>',
+        e6_lead:'<p>End-to-end predictive modeling and large-scale data processing for enterprise clients.</p>',
+        e6_tags:'<span class="tag">SAS</span><span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL Server</span><span class="tag">Text Mining</span><span class="tag">ML</span><span class="tag">SAS VA</span>',
+        e6_rest:'<p><strong>Key Responsibilities</strong></p><ul><li>Predictive models, Text Mining, initial ML pipelines.</li><li>SQL Server and SAS (EG/Miner) data quality for analytical flows.</li><li>SAS Fraud Framework for risk mitigation.</li><li>EDA with R and Python; SAS Visual Analytics dashboards.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Streamlined extraction/reporting; Gradient Boosting improved churn and fraud models.</li></ul>',
         e7_title:'Junior Analyst', e7_period:'Jun 2013 · Jul 2014', e7_co:'Analysis',
-        e7_body:'<p>Technical support and end-to-end data science workflows; integrity of large-scale datasets and predictive models for enterprise clients.</p><p><strong>Key Responsibilities</strong></p><ul><li>Data collection, cleansing, and organization (SQL, SAS).</li><li>Assistance on ML prototypes and process optimization algorithms.</li><li>SAS Visual Analytics dashboards and KPI tracking.</li><li>Requirements documentation between business and technical teams.</li><li>EDA on high-volume datasets.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Automated extraction reduced manual reporting effort.</li><li>Validation scripts improved database consistency.</li></ul><p><strong>Technical Stack:</strong> SQL Server · SAS Enterprise Guide · Excel · Intro R/Python · Visualization · Data Cleansing</p>',
+        e7_lead:'<p>Technical support and end-to-end data science workflows; integrity of large-scale datasets and predictive models for enterprise clients.</p>',
+        e7_tags:'<span class="tag">SQL Server</span><span class="tag">SAS EG</span><span class="tag">Excel</span><span class="tag">R</span><span class="tag">Python</span><span class="tag">Visualization</span>',
+        e7_rest:'<p><strong>Key Responsibilities</strong></p><ul><li>Data collection, cleansing, and organization (SQL, SAS).</li><li>Assistance on ML prototypes and process optimization algorithms.</li><li>SAS Visual Analytics dashboards and KPI tracking.</li><li>Requirements documentation between business and technical teams.</li><li>EDA on high-volume datasets.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Automated extraction reduced manual reporting effort.</li><li>Validation scripts improved database consistency.</li></ul>',
         e8_title:'Junior Technical Analyst', e8_period:'Jun 2012 · Jan 2013', e8_co:'Generali Brasil Seguros · Greater Rio de Janeiro',
-        e8_body:'<p>Support for statistical models for insurance pricing and product optimization; balance between competitiveness and profitability.</p><p><strong>Key Responsibilities</strong></p><ul><li>GLMs for pricing; claim frequency and severity.</li><li>New product design aligned with actuarial assumptions.</li><li>Loss Ratio and GWP monitoring.</li><li>Large-scale data in SQL and SAS.</li><li>Executive loss ratio and conversion reports.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Tariff optimization and risk segmentation.</li><li>Data validation for reserves and premiums.</li></ul><p><strong>Stack:</strong> SAS Enterprise Guide · SQL Server · Pricing · Applied Statistics · Excel · Insurance KPIs (Loss Ratio)</p>',
+        e8_lead:'<p>Support for statistical models for insurance pricing and product optimization; balance between competitiveness and profitability.</p>',
+        e8_tags:'<span class="tag">SAS EG</span><span class="tag">SQL Server</span><span class="tag">GLMs</span><span class="tag">Excel</span><span class="tag">Loss Ratio</span><span class="tag">GWP</span>',
+        e8_rest:'<p><strong>Key Responsibilities</strong></p><ul><li>GLMs for pricing; claim frequency and severity.</li><li>New product design aligned with actuarial assumptions.</li><li>Loss Ratio and GWP monitoring.</li><li>Large-scale data in SQL and SAS.</li><li>Executive loss ratio and conversion reports.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Tariff optimization and risk segmentation.</li><li>Data validation for reserves and premiums.</li></ul>',
         e9_title:'Intern', e9_period:'Jun 2011 · Jun 2012', e9_co:'Generali Brasil Seguros',
-        e9_body:'<p>Support to the actuarial team in pricing and risk analysis; historical claims data and indicators for decisions.</p><p><strong>Key Responsibilities</strong></p><ul><li>Pricing model creation and maintenance.</li><li>Claims time-series: frequency and severity patterns.</li><li>KPI reporting for strategic and product adjustments.</li><li>Data extraction and organization with SQL and SAS.</li><li>Market benchmarking for competitiveness.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Automation reduced monthly claims reporting turnaround.</li><li>Raw data validation improved historical database consistency.</li></ul><p><strong>Stack:</strong> SAS Enterprise Guide · SQL · Excel · Time Series · Actuarial Indicators · Descriptive Statistics</p>',
+        e9_lead:'<p>Support to the actuarial team in pricing and risk analysis; historical claims data and indicators for decisions.</p>',
+        e9_tags:'<span class="tag">SAS EG</span><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Time Series</span><span class="tag">Actuarial</span>',
+        e9_rest:'<p><strong>Key Responsibilities</strong></p><ul><li>Pricing model creation and maintenance.</li><li>Claims time-series: frequency and severity patterns.</li><li>KPI reporting for strategic and product adjustments.</li><li>Data extraction and organization with SQL and SAS.</li><li>Market benchmarking for competitiveness.</li></ul><p><strong>Results | Highlights</strong></p><ul><li>Automation reduced monthly claims reporting turnaround.</li><li>Raw data validation improved historical database consistency.</li></ul>',
         skills_h2:'Technical Skills', sg1:'LLMs & Agents', sg2:'Machine Learning', sg3:'MLOps & Infra', sg4:'Data & Statistics', sg5:'Integrations',
         chat_label:'Interactive', chat_h2:'Talk to my profile', chat_intro_h3:'Ask anything about my career',
         chat_p1:'This chatbot uses the Anthropic API to answer questions about my experience, projects, skills and academic background. Enter your API key to start.',
@@ -799,25 +804,43 @@
         p2_title:'Data Science Ecosystem Agent', p2_desc:'Sistema multi-agente com LangChain que gera código Python, estrutura pipelines MLOps e valida logs de execução. Automatiza o ciclo completo de desenvolvimento de modelos.', p2_impact:'50% menos tempo de entrega de modelos',
         p3_title:'Dataframe Analytics Agent', p3_desc:'LLM via LangChain que entrega insights analíticos diretamente no WhatsApp e Microsoft Teams. Decisões que levavam dias tornam-se ações em tempo real para gestores.', p3_impact:'Decisões de dias viram ações em tempo real',
         p4_title:'Telecom Sales & Recommendation Agent', p4_desc:'Sistema que combina LLM com motor de recomendação para gerar ofertas personalizadas em escala para clientes de telecomunicações.', p4_impact:'Ofertas personalizadas em escala',
-        exp_label:'Trajetória', exp_h2:'Experiência Profissional',
+        exp_label:'Trajetória', exp_h2:'Experiência Profissional', exp_more:'Mais detalhes',
         e1_title:'Head of Data Science & AI', e1_period:'Jan 2022 · Atual', e1_co:'Analysis',
-        e1_body:'<p>Liderei um time multidisciplinar de 25 pessoas em Data Science &amp; IA, com entrega de ponta a ponta de modelagem preditiva, pipelines LLMOps e agentes de IA para clientes em telecom, petróleo &amp; gás e varejo.</p><p><strong>Impacto de negócio</strong></p><ul><li><strong>Recuperação de receita:</strong> Mais de US$ 40M+ em gaps de faturamento B2B/B2C em telecom, com ML em auditorias em escala.</li><li><strong>Eficiência operacional:</strong> Inadimplência -15% e churn -10% com otimização de contato e modelos de propensão.</li><li><strong>Automação de pipelines:</strong> Processamento de 1,5 dias para 3 horas (95%) e ciclos de entrega de ML -50%.</li><li><strong>Parcerias:</strong> Modelos de fraude para a Receita Federal com SERPRO e SAS.</li></ul><p><strong>Agentes de IA (produção)</strong></p><ul><li>B2B Contract Intelligence (LlamaIndex + validação de alucinações): -75% tempo de revisão.</li><li>Data Science Ecosystem Agent (LangChain multiagente): código Python, MLOps, validação de logs; -50% time-to-market.</li><li>Dataframe Analytics Agent (WhatsApp/Teams): insights em tempo real.</li><li>Telecom Sales &amp; Recommendation: ofertas personalizadas em escala.</li></ul><p><strong>Stack:</strong> Python · LangChain · LlamaIndex · CrewAI · RAG · LoRA · MLOps · Docker · Kubernetes · AKS · SAS · SQL · R</p>',
+        e1_lead:'<p>Liderei um time multidisciplinar de 25 pessoas em Data Science &amp; IA, com entrega de ponta a ponta de modelagem preditiva, pipelines LLMOps e agentes de IA para clientes em telecom, petróleo &amp; gás e varejo.</p>',
+        e1_tags:'<span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">LlamaIndex</span><span class="tag">CrewAI</span><span class="tag">RAG</span><span class="tag">LoRA</span><span class="tag">MLOps</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AKS</span><span class="tag">SAS</span><span class="tag">SQL</span><span class="tag">R</span>',
+        e1_rest:'<p><strong>Impacto de negócio</strong></p><ul><li><strong>Recuperação de receita:</strong> Mais de US$ 40M+ em gaps de faturamento B2B/B2C em telecom, com ML em auditorias em escala.</li><li><strong>Eficiência operacional:</strong> Inadimplência -15% e churn -10% com otimização de contato e modelos de propensão.</li><li><strong>Automação de pipelines:</strong> Processamento de 1,5 dias para 3 horas (95%) e ciclos de entrega de ML -50%.</li><li><strong>Parcerias:</strong> Modelos de fraude para a Receita Federal com SERPRO e SAS.</li></ul><p><strong>Agentes de IA (produção)</strong></p><ul><li>B2B Contract Intelligence (LlamaIndex + validação de alucinações): -75% tempo de revisão.</li><li>Data Science Ecosystem Agent (LangChain multiagente): código Python, MLOps, validação de logs; -50% time-to-market.</li><li>Dataframe Analytics Agent (WhatsApp/Teams): insights em tempo real.</li><li>Telecom Sales &amp; Recommendation: ofertas personalizadas em escala.</li></ul>',
         e2_title:'Head of Innovation and Modeling', e2_period:'Jan 2021 · Jan 2022', e2_co:'Analysis',
-        e2_body:'<p>Direção de P&amp;D estratégico entre pesquisa em IA e aplicações de negócio. Time multidisciplinar de 7 pessoas.</p><p><strong>Responsabilidades</strong></p><ul><li>Pesquisa aplicada em NLP e LLMs para dados não estruturados.</li><li>Gestão de PoCs do experimento ao protótipo validado.</li><li>Liderança com stakeholders e parceiros.</li></ul><p><strong>Resultados</strong></p><ul><li><strong>LegalTech (Tribunal de Contas):</strong> automação judicial com NLP; ciclo de julgamento ~3x mais rápido.</li><li><strong>Deep Learning:</strong> modelos de cross-sell e up-sell.</li><li>Roadmap de inovação: estatística tradicional a Deep Learning.</li></ul><p><strong>Foco técnico:</strong> NLP · Deep Learning · LLMs · Modelagem · Python · Stakeholders</p>',
+        e2_lead:'<p>Direção de P&amp;D estratégico entre pesquisa em IA e aplicações de negócio. Time multidisciplinar de 7 pessoas.</p>',
+        e2_tags:'<span class="tag">NLP</span><span class="tag">Deep Learning</span><span class="tag">LLMs</span><span class="tag">Modelagem</span><span class="tag">Python</span><span class="tag">Stakeholders</span>',
+        e2_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Pesquisa aplicada em NLP e LLMs para dados não estruturados.</li><li>Gestão de PoCs do experimento ao protótipo validado.</li><li>Liderança com stakeholders e parceiros.</li></ul><p><strong>Resultados</strong></p><ul><li><strong>LegalTech (Tribunal de Contas):</strong> automação judicial com NLP; ciclo de julgamento ~3x mais rápido.</li><li><strong>Deep Learning:</strong> modelos de cross-sell e up-sell.</li><li>Roadmap de inovação: estatística tradicional a Deep Learning.</li></ul>',
         e3_title:'Analista Sênior – Cientista de Dados', e3_period:'Dez 2019 · Dez 2020', e3_co:'TC · Rio de Janeiro, Brasil',
-        e3_body:'<p>Estratégias quantitativas sistemáticas na B3 com modelagem estatística de alta dimensão e arquiteturas cloud (GCP).</p><p><strong>Responsabilidades</strong></p><ul><li>Modelagem de volatilidade GARCH/ARCH.</li><li>Arbitragem estatística (pairs trading).</li><li>Infraestrutura GCP: Cloud Run, Functions, APIs em tempo real.</li><li>Docker e CI/CD para sinais T5, T30, T60.</li><li>Backtesting com custos, slippage, Sharpe, Sortino, VaR.</li></ul><p><strong>Resultados</strong></p><ul><li>Modelos escalados para monitorar a B3 com APIs de alta disponibilidade.</li><li><strong>8% de retorno absoluto</strong> no portfólio inicial.</li></ul><p><strong>Stack:</strong> Python · GCP · Docker · SQL · Séries temporais · APIs</p>',
+        e3_lead:'<p>Estratégias quantitativas sistemáticas na B3 com modelagem estatística de alta dimensão e arquiteturas cloud (GCP).</p>',
+        e3_tags:'<span class="tag">Python</span><span class="tag">GCP</span><span class="tag">Docker</span><span class="tag">SQL</span><span class="tag">ML</span><span class="tag">Séries temporais</span><span class="tag">APIs</span>',
+        e3_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Modelagem de volatilidade GARCH/ARCH.</li><li>Arbitragem estatística (pairs trading).</li><li>Infraestrutura GCP: Cloud Run, Functions, APIs em tempo real.</li><li>Docker e CI/CD para sinais T5, T30, T60.</li><li>Backtesting com custos, slippage, Sharpe, Sortino, VaR.</li></ul><p><strong>Resultados</strong></p><ul><li>Modelos escalados para monitorar a B3 com APIs de alta disponibilidade.</li><li><strong>8% de retorno absoluto</strong> no portfólio inicial.</li></ul>',
         e4_title:'Customer Relations Specialist', e4_period:'Jan 2019 · Dez 2019', e4_co:'TIM Brasil · Rio de Janeiro',
-        e4_body:'<p>Modelos estatísticos e de ML para recuperação de crédito e mitigação de inadimplência.</p><p><strong>Responsabilidades</strong></p><ul><li>XGBoost e LightGBM para PD e scores comportamentais.</li><li>Estimativa de PCL/PPD alinhada a relatórios financeiros.</li><li>Motor de otimização com algoritmos genéticos para ROI de cobrança.</li><li>Modelos Self-Cure e campanhas segmentadas.</li></ul><p><strong>Resultados</strong></p><ul><li>Melhor precisão em PPD e previsão de inadimplência.</li><li>Redução de Roll Rate; scores em tempo real para campanhas.</li></ul><p><strong>Stack:</strong> Python · SQL · Algoritmos genéticos · PCL/PPD</p>',
+        e4_lead:'<p>Modelos estatísticos e de ML para recuperação de crédito e mitigação de inadimplência.</p>',
+        e4_tags:'<span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span><span class="tag">SQL</span><span class="tag">Algoritmos genéticos</span><span class="tag">PCL/PPD</span>',
+        e4_rest:'<p><strong>Responsabilidades</strong></p><ul><li>XGBoost e LightGBM para PD e scores comportamentais.</li><li>Estimativa de PCL/PPD alinhada a relatórios financeiros.</li><li>Motor de otimização com algoritmos genéticos para ROI de cobrança.</li><li>Modelos Self-Cure e campanhas segmentadas.</li></ul><p><strong>Resultados</strong></p><ul><li>Melhor precisão em PPD e previsão de inadimplência.</li><li>Redução de Roll Rate; scores em tempo real para campanhas.</li></ul>',
         e5_title:'Analista Sênior', e5_period:'Jan 2016 · Fev 2018', e5_co:'Analysis',
-        e5_body:'<p>Projetos analíticos de alto impacto e consultoria para Petrobras, Natura, GVT e TIM.</p><p><strong>Responsabilidades</strong></p><ul><li>Modelos XGBoost, LightGBM, Random Forest.</li><li>Text Mining e NLP.</li><li>MLOps: reprodutibilidade e monitoramento.</li><li>SAS, SQL Server, R, Python.</li><li>SAS Fraud Framework.</li></ul><p><strong>Resultados</strong></p><ul><li>Migração de SAS legado para pipelines Python.</li><li>Churn/LTV e manutenção preditiva.</li></ul><p><strong>Stack:</strong> Python · SAS Fraud Framework · R · MLOps · SQL Server · Text Mining</p>',
+        e5_lead:'<p>Projetos analíticos de alto impacto e consultoria para Petrobras, Natura, GVT e TIM.</p>',
+        e5_tags:'<span class="tag">Python</span><span class="tag">SAS Fraud Framework</span><span class="tag">R</span><span class="tag">MLOps</span><span class="tag">SQL Server</span><span class="tag">Text Mining</span>',
+        e5_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Modelos XGBoost, LightGBM, Random Forest.</li><li>Text Mining e NLP.</li><li>MLOps: reprodutibilidade e monitoramento.</li><li>SAS, SQL Server, R, Python.</li><li>SAS Fraud Framework.</li></ul><p><strong>Resultados</strong></p><ul><li>Migração de SAS legado para pipelines Python.</li><li>Churn/LTV e manutenção preditiva.</li></ul>',
         e6_title:'Mid Data Science', e6_period:'Jul 2014 · Jan 2016', e6_co:'Analysis',
-        e6_body:'<p>Modelagem preditiva e processamento de dados em grande escala.</p><p><strong>Responsabilidades</strong></p><ul><li>Modelos preditivos, Text Mining, pipelines de ML.</li><li>SQL Server e SAS (EG/Miner).</li><li>SAS Fraud Framework.</li><li>EDA em R e Python; dashboards SAS VA.</li></ul><p><strong>Resultados</strong></p><ul><li>Fluxos de extração otimizados; Gradient Boosting em churn e fraude.</li></ul><p><strong>Stack:</strong> SAS · Python · R · SQL Server · Text Mining</p>',
+        e6_lead:'<p>Modelagem preditiva e processamento de dados em grande escala.</p>',
+        e6_tags:'<span class="tag">SAS</span><span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL Server</span><span class="tag">Text Mining</span><span class="tag">SAS VA</span>',
+        e6_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Modelos preditivos, Text Mining, pipelines de ML.</li><li>SQL Server e SAS (EG/Miner).</li><li>SAS Fraud Framework.</li><li>EDA em R e Python; dashboards SAS VA.</li></ul><p><strong>Resultados</strong></p><ul><li>Fluxos de extração otimizados; Gradient Boosting em churn e fraude.</li></ul>',
         e7_title:'Analista Júnior', e7_period:'Jun 2013 · Jul 2014', e7_co:'Analysis',
-        e7_body:'<p>Suporte técnico a workflows de ciência de dados e integridade de bases.</p><p><strong>Responsabilidades</strong></p><ul><li>Coleta e limpeza de dados (SQL, SAS).</li><li>Apoio a protótipos de ML.</li><li>Dashboards e KPIs em SAS VA.</li><li>Documentação de requisitos.</li><li>EDA em grandes volumes.</li></ul><p><strong>Resultados</strong></p><ul><li>Automação de relatórios; scripts de validação.</li></ul><p><strong>Stack:</strong> SQL Server · SAS EG · Excel · R/Python introdutório</p>',
+        e7_lead:'<p>Suporte técnico a workflows de ciência de dados e integridade de bases.</p>',
+        e7_tags:'<span class="tag">SQL Server</span><span class="tag">SAS EG</span><span class="tag">Excel</span><span class="tag">R</span><span class="tag">Python</span>',
+        e7_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Coleta e limpeza de dados (SQL, SAS).</li><li>Apoio a protótipos de ML.</li><li>Dashboards e KPIs em SAS VA.</li><li>Documentação de requisitos.</li><li>EDA em grandes volumes.</li></ul><p><strong>Resultados</strong></p><ul><li>Automação de relatórios; scripts de validação.</li></ul>',
         e8_title:'Analista Técnico Júnior', e8_period:'Jun 2012 · Jan 2013', e8_co:'Generali Brasil Seguros · Grande Rio de Janeiro',
-        e8_body:'<p>Suporte a modelos estatísticos de precificação e otimização de produtos de seguros.</p><p><strong>Responsabilidades</strong></p><ul><li>GLMs para precificação; frequência e severidade de sinistros.</li><li>Design de produtos alinhado a premissas atuariais.</li><li>Monitoramento de Loss Ratio e GWP.</li><li>Dados em SQL e SAS; relatórios executivos.</li></ul><p><strong>Resultados</strong></p><ul><li>Otimização de tarifas e segmentação de risco.</li><li>Validação de dados para reservas e prêmios.</li></ul><p><strong>Stack:</strong> SAS EG · SQL Server · Precificação · Excel · KPIs de seguros</p>',
+        e8_lead:'<p>Suporte a modelos estatísticos de precificação e otimização de produtos de seguros.</p>',
+        e8_tags:'<span class="tag">SAS EG</span><span class="tag">SQL Server</span><span class="tag">GLMs</span><span class="tag">Excel</span><span class="tag">Loss Ratio</span>',
+        e8_rest:'<p><strong>Responsabilidades</strong></p><ul><li>GLMs para precificação; frequência e severidade de sinistros.</li><li>Design de produtos alinhado a premissas atuariais.</li><li>Monitoramento de Loss Ratio e GWP.</li><li>Dados em SQL e SAS; relatórios executivos.</li></ul><p><strong>Resultados</strong></p><ul><li>Otimização de tarifas e segmentação de risco.</li><li>Validação de dados para reservas e prêmios.</li></ul>',
         e9_title:'Estagiário', e9_period:'Jun 2011 · Jun 2012', e9_co:'Generali Brasil Seguros',
-        e9_body:'<p>Suporte à equipe atuarial em precificação e análise de risco.</p><p><strong>Responsabilidades</strong></p><ul><li>Manutenção de modelos de precificação.</li><li>Séries temporais de sinistros.</li><li>Relatórios de KPIs.</li><li>Extração de dados com SQL e SAS.</li><li>Benchmarking de mercado.</li></ul><p><strong>Resultados</strong></p><ul><li>Automação de relatórios mensais de sinistros.</li><li>Validação de dados históricos.</li></ul><p><strong>Stack:</strong> SAS EG · SQL · Excel · Séries temporais · Indicadores atuariais</p>',
+        e9_lead:'<p>Suporte à equipe atuarial em precificação e análise de risco.</p>',
+        e9_tags:'<span class="tag">SAS EG</span><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Séries temporais</span>',
+        e9_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Manutenção de modelos de precificação.</li><li>Séries temporais de sinistros.</li><li>Relatórios de KPIs.</li><li>Extração de dados com SQL e SAS.</li><li>Benchmarking de mercado.</li></ul><p><strong>Resultados</strong></p><ul><li>Automação de relatórios mensais de sinistros.</li><li>Validação de dados históricos.</li></ul>',
         skills_h2:'Habilidades Técnicas', sg1:'LLMs & Agentes', sg2:'Machine Learning', sg3:'MLOps & Infra', sg4:'Dados & Estatística', sg5:'Integrações',
         chat_label:'Interativo', chat_h2:'Converse com meu perfil', chat_intro_h3:'Pergunte o que quiser sobre minha trajetória',
         chat_p1:'Este chatbot usa a API da Anthropic para responder perguntas sobre minha experiência, projetos, habilidades e formação. Insira sua chave da API para começar.',
@@ -850,25 +873,43 @@
         p2_title:'Data Science Ecosystem Agent', p2_desc:'Sistema multi-agente con LangChain que genera código Python, estructura pipelines MLOps y valida logs de ejecución. Automatiza el ciclo completo de desarrollo de modelos.', p2_impact:'50% menos tiempo de entrega de modelos',
         p3_title:'Dataframe Analytics Agent', p3_desc:'LLM vía LangChain que entrega insights analíticos directamente en WhatsApp y Microsoft Teams. Decisiones que tardaban días se convierten en acciones en tiempo real.', p3_impact:'Decisiones de días se vuelven acciones en tiempo real',
         p4_title:'Telecom Sales & Recommendation Agent', p4_desc:'Sistema que combina LLM con motor de recomendación para generar ofertas personalizadas a escala para clientes de telecomunicaciones.', p4_impact:'Ofertas personalizadas a escala',
-        exp_label:'Trayectoria', exp_h2:'Experiencia Profesional',
+        exp_label:'Trayectoria', exp_h2:'Experiencia Profesional', exp_more:'Más detalles',
         e1_title:'Head of Data Science & AI', e1_period:'Ene 2022 · Actual', e1_co:'Analysis',
-        e1_body:'<p>Lideré un equipo multidisciplinario de 25 personas en Data Science e IA, con entrega de extremo a extremo de modelado predictivo, pipelines LLMOps y agentes de IA para clientes en telecom, petróleo &amp; gas y retail.</p><p><strong>Impacto en el negocio</strong></p><ul><li><strong>Recuperación de ingresos:</strong> Más de US$ 40M+ en brechas de facturación B2B/B2C con ML a escala.</li><li><strong>Eficiencia:</strong> Morosidad -15% y churn -10% con optimización de contacto.</li><li><strong>Automatización:</strong> Procesamiento de 1,5 días a 3 horas (95%) y ciclos de entrega ML -50%.</li><li><strong>Alianzas:</strong> Modelos de fraude para la Receita Federal con SERPRO y SAS.</li></ul><p><strong>Agentes de IA (producción)</strong></p><ul><li>B2B Contract Intelligence (LlamaIndex + validación): -75% tiempo de revisión.</li><li>Data Science Ecosystem Agent (LangChain multiagente): código Python, MLOps, logs; -50% time-to-market.</li><li>Dataframe Analytics Agent (WhatsApp/Teams): insights en tiempo real.</li><li>Telecom Sales &amp; Recommendation: ofertas personalizadas a escala.</li></ul><p><strong>Stack:</strong> Python · LangChain · LlamaIndex · CrewAI · RAG · LoRA · MLOps · Docker · Kubernetes · AKS · SAS · SQL · R</p>',
+        e1_lead:'<p>Lideré un equipo multidisciplinario de 25 personas en Data Science e IA, con entrega de extremo a extremo de modelado predictivo, pipelines LLMOps y agentes de IA para clientes en telecom, petróleo &amp; gas y retail.</p>',
+        e1_tags:'<span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">LlamaIndex</span><span class="tag">CrewAI</span><span class="tag">RAG</span><span class="tag">LoRA</span><span class="tag">MLOps</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AKS</span><span class="tag">SAS</span><span class="tag">SQL</span><span class="tag">R</span>',
+        e1_rest:'<p><strong>Impacto en el negocio</strong></p><ul><li><strong>Recuperación de ingresos:</strong> Más de US$ 40M+ en brechas de facturación B2B/B2C con ML a escala.</li><li><strong>Eficiencia:</strong> Morosidad -15% y churn -10% con optimización de contacto.</li><li><strong>Automatización:</strong> Procesamiento de 1,5 días a 3 horas (95%) y ciclos de entrega ML -50%.</li><li><strong>Alianzas:</strong> Modelos de fraude para la Receita Federal con SERPRO y SAS.</li></ul><p><strong>Agentes de IA (producción)</strong></p><ul><li>B2B Contract Intelligence (LlamaIndex + validación): -75% tiempo de revisión.</li><li>Data Science Ecosystem Agent (LangChain multiagente): código Python, MLOps, logs; -50% time-to-market.</li><li>Dataframe Analytics Agent (WhatsApp/Teams): insights en tiempo real.</li><li>Telecom Sales &amp; Recommendation: ofertas personalizadas a escala.</li></ul>',
         e2_title:'Head of Innovation and Modeling', e2_period:'Ene 2021 · Ene 2022', e2_co:'Analysis',
-        e2_body:'<p>Dirección de I+D estratégico entre investigación en IA y aplicaciones de negocio. Equipo multidisciplinario de 7 personas.</p><p><strong>Responsabilidades</strong></p><ul><li>Investigación aplicada en NLP y LLMs para datos no estructurados.</li><li>Gestión de PoCs desde la hipótesis hasta el prototipo validado.</li><li>Liderazgo con stakeholders y socios.</li></ul><p><strong>Resultados</strong></p><ul><li><strong>LegalTech (Tribunal de Cuentas):</strong> automatización judicial con NLP; ciclo ~3x más rápido.</li><li><strong>Deep Learning:</strong> modelos cross-sell y up-sell.</li><li>Hoja de ruta de innovación: estadística tradicional a Deep Learning.</li></ul><p><strong>Foco técnico:</strong> NLP · Deep Learning · LLMs · Modelado · Python · Stakeholders</p>',
+        e2_lead:'<p>Dirección de I+D estratégico entre investigación en IA y aplicaciones de negocio. Equipo multidisciplinario de 7 personas.</p>',
+        e2_tags:'<span class="tag">NLP</span><span class="tag">Deep Learning</span><span class="tag">LLMs</span><span class="tag">Modelado</span><span class="tag">Python</span><span class="tag">Stakeholders</span>',
+        e2_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Investigación aplicada en NLP y LLMs para datos no estructurados.</li><li>Gestión de PoCs desde la hipótesis hasta el prototipo validado.</li><li>Liderazgo con stakeholders y socios.</li></ul><p><strong>Resultados</strong></p><ul><li><strong>LegalTech (Tribunal de Cuentas):</strong> automatización judicial con NLP; ciclo ~3x más rápido.</li><li><strong>Deep Learning:</strong> modelos cross-sell y up-sell.</li><li>Hoja de ruta de innovación: estadística tradicional a Deep Learning.</li></ul>',
         e3_title:'Analista Senior – Científico de Datos', e3_period:'Dic 2019 · Dic 2020', e3_co:'TC · Río de Janeiro, Brasil',
-        e3_body:'<p>Estrategias cuantitativas sistemáticas en la B3 con modelado estadístico de alta dimensión y arquitecturas cloud (GCP).</p><p><strong>Responsabilidades</strong></p><ul><li>Modelado de volatilidad GARCH/ARCH.</li><li>Arbitraje estadístico (pairs trading).</li><li>Infraestructura GCP: Cloud Run, Functions, APIs en tiempo real.</li><li>Docker y CI/CD para señales T5, T30, T60.</li><li>Backtesting con costes, slippage, Sharpe, Sortino, VaR.</li></ul><p><strong>Resultados</strong></p><ul><li>Modelos escalados para monitorear la B3 con APIs de alta disponibilidad.</li><li><strong>8% de retorno absoluto</strong> en el portafolio inicial.</li></ul><p><strong>Stack:</strong> Python · GCP · Docker · SQL · Series temporales · APIs</p>',
+        e3_lead:'<p>Estrategias cuantitativas sistemáticas en la B3 con modelado estadístico de alta dimensión y arquitecturas cloud (GCP).</p>',
+        e3_tags:'<span class="tag">Python</span><span class="tag">GCP</span><span class="tag">Docker</span><span class="tag">SQL</span><span class="tag">ML</span><span class="tag">Series temporales</span><span class="tag">APIs</span>',
+        e3_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Modelado de volatilidad GARCH/ARCH.</li><li>Arbitraje estadístico (pairs trading).</li><li>Infraestructura GCP: Cloud Run, Functions, APIs en tiempo real.</li><li>Docker y CI/CD para señales T5, T30, T60.</li><li>Backtesting con costes, slippage, Sharpe, Sortino, VaR.</li></ul><p><strong>Resultados</strong></p><ul><li>Modelos escalados para monitorear la B3 con APIs de alta disponibilidad.</li><li><strong>8% de retorno absoluto</strong> en el portafolio inicial.</li></ul>',
         e4_title:'Customer Relations Specialist', e4_period:'Ene 2019 · Dic 2019', e4_co:'TIM Brasil · Río de Janeiro',
-        e4_body:'<p>Modelos estadísticos y de ML para recuperación de crédito y mitigación de morosidad.</p><p><strong>Responsabilidades</strong></p><ul><li>XGBoost y LightGBM para PD y scores comportamentales.</li><li>Estimación de PCL/PPD alineada a reporting financiero.</li><li>Motor de optimización con algoritmos genéticos para ROI de cobranza.</li><li>Modelos Self-Cure y campañas segmentadas.</li></ul><p><strong>Resultados</strong></p><ul><li>Mayor precisión en PPD y morosidad.</li><li>Reducción de Roll Rate; scores en tiempo real.</li></ul><p><strong>Stack:</strong> Python · SQL · Algoritmos genéticos · PCL/PPD</p>',
+        e4_lead:'<p>Modelos estadísticos y de ML para recuperación de crédito y mitigación de morosidad.</p>',
+        e4_tags:'<span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span><span class="tag">SQL</span><span class="tag">Algoritmos genéticos</span><span class="tag">PCL/PPD</span>',
+        e4_rest:'<p><strong>Responsabilidades</strong></p><ul><li>XGBoost y LightGBM para PD y scores comportamentales.</li><li>Estimación de PCL/PPD alineada a reporting financiero.</li><li>Motor de optimización con algoritmos genéticos para ROI de cobranza.</li><li>Modelos Self-Cure y campañas segmentadas.</li></ul><p><strong>Resultados</strong></p><ul><li>Mayor precisión en PPD y morosidad.</li><li>Reducción de Roll Rate; scores en tiempo real.</li></ul>',
         e5_title:'Analista Senior', e5_period:'Ene 2016 · Feb 2018', e5_co:'Analysis',
-        e5_body:'<p>Proyectos analíticos de alto impacto y consultoría para Petrobras, Natura, GVT y TIM.</p><p><strong>Responsabilidades</strong></p><ul><li>Modelos XGBoost, LightGBM, Random Forest.</li><li>Text Mining y NLP.</li><li>MLOps: reproducibilidad y monitoreo.</li><li>SAS, SQL Server, R, Python.</li><li>SAS Fraud Framework.</li></ul><p><strong>Resultados</strong></p><ul><li>Migración de SAS legado a pipelines Python.</li><li>Churn/LTV y mantenimiento predictivo.</li></ul><p><strong>Stack:</strong> Python · SAS Fraud Framework · R · MLOps · SQL Server · Text Mining</p>',
+        e5_lead:'<p>Proyectos analíticos de alto impacto y consultoría para Petrobras, Natura, GVT y TIM.</p>',
+        e5_tags:'<span class="tag">Python</span><span class="tag">SAS Fraud Framework</span><span class="tag">R</span><span class="tag">MLOps</span><span class="tag">SQL Server</span><span class="tag">Text Mining</span>',
+        e5_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Modelos XGBoost, LightGBM, Random Forest.</li><li>Text Mining y NLP.</li><li>MLOps: reproducibilidad y monitoreo.</li><li>SAS, SQL Server, R, Python.</li><li>SAS Fraud Framework.</li></ul><p><strong>Resultados</strong></p><ul><li>Migración de SAS legado a pipelines Python.</li><li>Churn/LTV y mantenimiento predictivo.</li></ul>',
         e6_title:'Mid Data Science', e6_period:'Jul 2014 · Ene 2016', e6_co:'Analysis',
-        e6_body:'<p>Modelado predictivo y procesamiento de datos a gran escala.</p><p><strong>Responsabilidades</strong></p><ul><li>Modelos predictivos, Text Mining, pipelines de ML.</li><li>SQL Server y SAS (EG/Miner).</li><li>SAS Fraud Framework.</li><li>EDA en R y Python; dashboards SAS VA.</li></ul><p><strong>Resultados</strong></p><ul><li>Flujos de extracción optimizados; Gradient Boosting en churn y fraude.</li></ul><p><strong>Stack:</strong> SAS · Python · R · SQL Server · Text Mining</p>',
+        e6_lead:'<p>Modelado predictivo y procesamiento de datos a gran escala.</p>',
+        e6_tags:'<span class="tag">SAS</span><span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL Server</span><span class="tag">Text Mining</span><span class="tag">SAS VA</span>',
+        e6_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Modelos predictivos, Text Mining, pipelines de ML.</li><li>SQL Server y SAS (EG/Miner).</li><li>SAS Fraud Framework.</li><li>EDA en R y Python; dashboards SAS VA.</li></ul><p><strong>Resultados</strong></p><ul><li>Flujos de extracción optimizados; Gradient Boosting en churn y fraude.</li></ul>',
         e7_title:'Analista Junior', e7_period:'Jun 2013 · Jul 2014', e7_co:'Analysis',
-        e7_body:'<p>Soporte técnico a workflows de ciencia de datos e integridad de bases.</p><p><strong>Responsabilidades</strong></p><ul><li>Recolección y limpieza (SQL, SAS).</li><li>Apoyo a prototipos de ML.</li><li>Dashboards y KPIs en SAS VA.</li><li>Documentación de requisitos.</li><li>EDA en grandes volúmenes.</li></ul><p><strong>Resultados</strong></p><ul><li>Automatización de reportes; scripts de validación.</li></ul><p><strong>Stack:</strong> SQL Server · SAS EG · Excel · R/Python introductorio</p>',
+        e7_lead:'<p>Soporte técnico a workflows de ciencia de datos e integridad de bases.</p>',
+        e7_tags:'<span class="tag">SQL Server</span><span class="tag">SAS EG</span><span class="tag">Excel</span><span class="tag">R</span><span class="tag">Python</span>',
+        e7_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Recolección y limpieza (SQL, SAS).</li><li>Apoyo a prototipos de ML.</li><li>Dashboards y KPIs en SAS VA.</li><li>Documentación de requisitos.</li><li>EDA en grandes volúmenes.</li></ul><p><strong>Resultados</strong></p><ul><li>Automatización de reportes; scripts de validación.</li></ul>',
         e8_title:'Analista Técnico Junior', e8_period:'Jun 2012 · Ene 2013', e8_co:'Generali Brasil Seguros · Gran Río de Janeiro',
-        e8_body:'<p>Soporte a modelos estadísticos de tarificación y optimización de productos de seguros.</p><p><strong>Responsabilidades</strong></p><ul><li>GLMs para pricing; frecuencia y severidad de siniestros.</li><li>Diseño de productos alineado a supuestos actuariales.</li><li>Monitoreo de Loss Ratio y GWP.</li><li>Datos en SQL y SAS; informes ejecutivos.</li></ul><p><strong>Resultados</strong></p><ul><li>Optimización de tarifas y segmentación de riesgo.</li><li>Validación de datos para reservas y primas.</li></ul><p><strong>Stack:</strong> SAS EG · SQL Server · Pricing · Excel · KPIs de seguros</p>',
+        e8_lead:'<p>Soporte a modelos estadísticos de tarificación y optimización de productos de seguros.</p>',
+        e8_tags:'<span class="tag">SAS EG</span><span class="tag">SQL Server</span><span class="tag">GLMs</span><span class="tag">Excel</span><span class="tag">Loss Ratio</span>',
+        e8_rest:'<p><strong>Responsabilidades</strong></p><ul><li>GLMs para pricing; frecuencia y severidad de siniestros.</li><li>Diseño de productos alineado a supuestos actuariales.</li><li>Monitoreo de Loss Ratio y GWP.</li><li>Datos en SQL y SAS; informes ejecutivos.</li></ul><p><strong>Resultados</strong></p><ul><li>Optimización de tarifas y segmentación de riesgo.</li><li>Validación de datos para reservas y primas.</li></ul>',
         e9_title:'Pasante', e9_period:'Jun 2011 · Jun 2012', e9_co:'Generali Brasil Seguros',
-        e9_body:'<p>Soporte al equipo actuarial en pricing y análisis de riesgo.</p><p><strong>Responsabilidades</strong></p><ul><li>Mantenimiento de modelos de pricing.</li><li>Series temporales de siniestros.</li><li>Informes de KPIs.</li><li>Extracción con SQL y SAS.</li><li>Benchmarking de mercado.</li></ul><p><strong>Resultados</strong></p><ul><li>Automatización de informes mensuales de siniestros.</li><li>Validación de bases históricas.</li></ul><p><strong>Stack:</strong> SAS EG · SQL · Excel · Series temporales · Indicadores actuariales</p>',
+        e9_lead:'<p>Soporte al equipo actuarial en pricing y análisis de riesgo.</p>',
+        e9_tags:'<span class="tag">SAS EG</span><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Series temporales</span>',
+        e9_rest:'<p><strong>Responsabilidades</strong></p><ul><li>Mantenimiento de modelos de pricing.</li><li>Series temporales de siniestros.</li><li>Informes de KPIs.</li><li>Extracción con SQL y SAS.</li><li>Benchmarking de mercado.</li></ul><p><strong>Resultados</strong></p><ul><li>Automatización de informes mensuales de siniestros.</li><li>Validación de bases históricas.</li></ul>',
         skills_h2:'Habilidades Técnicas', sg1:'LLMs & Agentes', sg2:'Machine Learning', sg3:'MLOps & Infra', sg4:'Datos & Estadística', sg5:'Integraciones',
         chat_label:'Interactivo', chat_h2:'Conversa con mi perfil', chat_intro_h3:'Pregunta lo que quieras sobre mi trayectoria',
         chat_p1:'Este chatbot usa la API de Anthropic para responder preguntas sobre mi experiencia, proyectos, habilidades y formación. Ingresa tu API key para comenzar.',
