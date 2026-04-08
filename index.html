@@ -218,12 +218,13 @@
     #contato { background: var(--bg); }
     .contact-intro { font-size: 1.1rem; color: var(--muted); margin-bottom: 3rem; max-width: 600px; }
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-    .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; text-decoration: none; color: var(--text); display: flex; align-items: center; gap: 1rem; transition: all 0.2s; }
+    .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; text-decoration: none; color: var(--text); display: flex; align-items: center; gap: 1rem; transition: all 0.2s; min-width: 0; }
     .contact-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-2px); }
     .contact-icon { width: 44px; height: 44px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .contact-icon svg { width: 20px; height: 20px; fill: var(--accent); }
+    .contact-info { flex: 1; min-width: 0; }
     .contact-info .type { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
-    .contact-info .value { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+    .contact-info .value { font-size: 0.875rem; font-weight: 600; color: var(--text); line-height: 1.35; word-break: break-word; overflow-wrap: anywhere; hyphens: auto; }
 
     /* ── FOOTER ── */
     footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
@@ -637,8 +638,8 @@
       <div class="chatbot-wrapper">
         <div class="chatbot-intro fade-in">
           <h3 data-i18n="chat_intro_h3">Ask anything about my career</h3>
-          <p data-i18n="chat_p1">This chatbot uses the Anthropic API to answer questions about my experience, projects, skills and academic background. Enter your API key to start.</p>
-          <p data-i18n="chat_p2">Your key is stored only in your browser (localStorage) and is never sent to any external server.</p>
+          <p id="chatP1">This chatbot uses the Anthropic API to answer questions about my experience, projects, skills and academic background. Enter your API key to start.</p>
+          <p id="chatP2" class="chat-p2">Your key is stored only in your browser (localStorage) and is never sent to any external server.</p>
           <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem;">
             <span style="font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;" data-i18n="chat_qlabel">Popular questions</span>
             <span style="font-size:0.85rem;color:var(--muted);" data-i18n="chat_qitem1">· What was the biggest business impact?</span>
@@ -655,7 +656,7 @@
               <div class="status" data-i18n="chat_status">Online</div>
             </div>
           </div>
-          <div class="api-key-bar">
+          <div class="api-key-bar" id="apiKeyBar">
             <input type="password" id="apiKeyInput" data-i18n-ph="api_ph" placeholder="Paste your Anthropic API key (sk-ant-...)" />
             <button onclick="saveApiKey()" data-i18n="api_save">Save</button>
           </div>
@@ -712,6 +713,9 @@
   <footer>
     <p data-i18n="footer_text">&copy; 2026 Luccas Santos · Head of Data Science & AI · Rio de Janeiro, Brazil</p>
   </footer>
+
+  <!-- Chat com Groq sem chave no navegador: deploy no Vercel com api/chat.js, defina GROQ_API_KEY no projeto e descomente:
+  <script>window.__PORTFOLIO_CHAT_API__='/api/chat';</script> -->
 
   <script>
     // ── TRANSLATIONS ──
@@ -775,6 +779,7 @@
         skills_h2:'Technical Skills', sg1:'LLMs & Agents', sg2:'Machine Learning', sg3:'MLOps & Infra', sg4:'Data & Statistics', sg5:'Integrations',
         chat_label:'Interactive', chat_h2:'Talk to my profile', chat_intro_h3:'Ask anything about my career',
         chat_p1:'This chatbot uses the Anthropic API to answer questions about my experience, projects, skills and academic background. Enter your API key to start.',
+        chat_p1_hosted:'This assistant runs on a secure backend (Groq). Visitors do not need an API key.',
         chat_p2:'Your key is stored only in your browser (localStorage) and is never sent to any external server.',
         chat_qlabel:'Popular questions', chat_qitem1:'· What was the biggest business impact?', chat_qitem2:'· Which AI agents are in production?', chat_qitem3:'· What is the main tech stack?', chat_qitem4:'· What is the academic background?',
         chat_name:'Luccas Santos AI', chat_status:'Online',
@@ -844,6 +849,7 @@
         skills_h2:'Habilidades Técnicas', sg1:'LLMs & Agentes', sg2:'Machine Learning', sg3:'MLOps & Infra', sg4:'Dados & Estatística', sg5:'Integrações',
         chat_label:'Interativo', chat_h2:'Converse com meu perfil', chat_intro_h3:'Pergunte o que quiser sobre minha trajetória',
         chat_p1:'Este chatbot usa a API da Anthropic para responder perguntas sobre minha experiência, projetos, habilidades e formação. Insira sua chave da API para começar.',
+        chat_p1_hosted:'O assistente roda em um backend seguro (Groq). Visitantes não precisam de chave de API.',
         chat_p2:'Sua chave é salva apenas no seu navegador (localStorage) e nunca enviada para nenhum servidor externo.',
         chat_qlabel:'Perguntas populares', chat_qitem1:'· Qual foi o maior impacto de negócio?', chat_qitem2:'· Quais agentes de IA estão em produção?', chat_qitem3:'· Qual é o stack técnico principal?', chat_qitem4:'· Qual é a formação acadêmica?',
         chat_name:'Luccas Santos AI', chat_status:'Online',
@@ -913,6 +919,7 @@
         skills_h2:'Habilidades Técnicas', sg1:'LLMs & Agentes', sg2:'Machine Learning', sg3:'MLOps & Infra', sg4:'Datos & Estadística', sg5:'Integraciones',
         chat_label:'Interactivo', chat_h2:'Conversa con mi perfil', chat_intro_h3:'Pregunta lo que quieras sobre mi trayectoria',
         chat_p1:'Este chatbot usa la API de Anthropic para responder preguntas sobre mi experiencia, proyectos, habilidades y formación. Ingresa tu API key para comenzar.',
+        chat_p1_hosted:'El asistente funciona en un backend seguro (Groq). Los visitantes no necesitan una API key.',
         chat_p2:'Tu clave se guarda solo en tu navegador (localStorage) y nunca se envía a ningún servidor externo.',
         chat_qlabel:'Preguntas populares', chat_qitem1:'· ¿Cuál fue el mayor impacto en el negocio?', chat_qitem2:'· ¿Qué agentes de IA están en producción?', chat_qitem3:'· ¿Cuál es el stack técnico principal?', chat_qitem4:'· ¿Cuál es la formación académica?',
         chat_name:'Luccas Santos IA', chat_status:'En línea',
@@ -924,6 +931,27 @@
         footer_text:'\u00a9 2026 Luccas Santos \u00b7 Head of Data Science & AI \u00b7 Río de Janeiro, Brasil'
       }
     };
+
+    /** Com backend (ex.: '/api/chat' no Vercel), o chat usa Groq no servidor — a chave fica só nas variáveis de ambiente, não no HTML. */
+    const CHAT_BACKEND_URL = typeof window !== 'undefined' && window.__PORTFOLIO_CHAT_API__ ? String(window.__PORTFOLIO_CHAT_API__).trim() : '';
+
+    function updateChatIntroText() {
+      const t = i18n[currentLang];
+      const p1 = document.getElementById('chatP1');
+      const p2 = document.getElementById('chatP2');
+      const bar = document.getElementById('apiKeyBar');
+      if (!p1 || !p2 || !bar) return;
+      if (CHAT_BACKEND_URL) {
+        p1.textContent = t.chat_p1_hosted || t.chat_p1;
+        p2.style.display = 'none';
+        bar.style.display = 'none';
+      } else {
+        p1.textContent = t.chat_p1;
+        p2.textContent = t.chat_p2;
+        p2.style.display = '';
+        bar.style.display = '';
+      }
+    }
 
     let currentLang = localStorage.getItem('lang') || 'en';
 
@@ -960,6 +988,8 @@
       // Update initial bot message
       const initMsg = document.getElementById('initMsg');
       if (initMsg) initMsg.textContent = t.chat_init_msg;
+
+      updateChatIntroText();
     }
 
     // Init language
@@ -1060,27 +1090,49 @@ EXPERIENCE (most recent):
       const input = document.getElementById('chatInput');
       const text = input.value.trim();
       if (!text) return;
-      const apiKey = localStorage.getItem('anthropic_api_key') || '';
-      if (!apiKey) { appendMessage('bot', currentLang === 'pt' ? 'Por favor, insira sua Anthropic API key no campo acima.' : currentLang === 'es' ? 'Por favor, ingresa tu Anthropic API key arriba.' : 'Please enter your Anthropic API key in the field above.'); return; }
+      if (!CHAT_BACKEND_URL) {
+        const apiKey = localStorage.getItem('anthropic_api_key') || '';
+        if (!apiKey) {
+          appendMessage('bot', currentLang === 'pt' ? 'Por favor, insira sua Anthropic API key no campo acima.' : currentLang === 'es' ? 'Por favor, ingresa tu Anthropic API key arriba.' : 'Please enter your Anthropic API key in the field above.');
+          return;
+        }
+      }
       input.value = '';
       setSendDisabled(true);
       appendMessage('user', text);
       conversationHistory.push({ role: 'user', content: text });
       appendTyping();
       try {
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
-          method: 'POST',
-          headers: { 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json', 'anthropic-dangerous-direct-browser-calls': 'true' },
-          body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1024, system: SYSTEM_PROMPT, messages: conversationHistory })
-        });
+        let response;
+        if (CHAT_BACKEND_URL) {
+          const messages = [{ role: 'system', content: SYSTEM_PROMPT }, ...conversationHistory];
+          response = await fetch(CHAT_BACKEND_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages })
+          });
+        } else {
+          const apiKey = localStorage.getItem('anthropic_api_key') || '';
+          response = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: { 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json', 'anthropic-dangerous-direct-browser-calls': 'true' },
+            body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1024, system: SYSTEM_PROMPT, messages: conversationHistory })
+          });
+        }
         document.getElementById('typingIndicator')?.remove();
         if (!response.ok) {
           const err = await response.json().catch(() => ({}));
-          appendMessage('bot', err.error?.message || `Error ${response.status}. Check your API key.`);
+          const msg = err.error || err.message || (typeof err.error === 'object' && err.error?.message) || `Error ${response.status}.`;
+          appendMessage('bot', CHAT_BACKEND_URL ? msg : (err.error?.message || `Error ${response.status}. Check your API key.`));
           conversationHistory.pop();
         } else {
           const data = await response.json();
-          const reply = data.content?.[0]?.text || 'Could not generate a response.';
+          let reply;
+          if (CHAT_BACKEND_URL) {
+            reply = data.reply || data.error || 'Could not generate a response.';
+          } else {
+            reply = data.content?.[0]?.text || 'Could not generate a response.';
+          }
           conversationHistory.push({ role: 'assistant', content: reply });
           appendMessage('bot', reply);
         }
@@ -1098,8 +1150,7 @@ EXPERIENCE (most recent):
       sendMessage();
     }
 
-    // Show saved key hint on load
-    if (localStorage.getItem('anthropic_api_key')) {
+    if (!CHAT_BACKEND_URL && localStorage.getItem('anthropic_api_key')) {
       setTimeout(() => {
         const input = document.getElementById('apiKeyInput');
         if (input) input.placeholder = i18n[currentLang].api_saved || 'API key saved ✓';
