@@ -123,17 +123,21 @@
 
     /* ── EXPERIÊNCIA ── */
     #experiencia { background: var(--bg2); }
-    .exp-details { margin-top: 0.5rem; }
-    .exp-details summary {
-      list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.9rem; font-weight: 600; color: var(--accent);
-      padding: 0.5rem 0; user-select: none; max-width: 100%;
+    .exp-item-summary {
+      list-style: none; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem;
+      padding: 0 0 0.25rem 0; user-select: none;
     }
-    .exp-details summary::-webkit-details-marker { display: none; }
-    .exp-details summary::after { content: '▸'; font-size: 0.65rem; opacity: 0.8; transition: transform 0.2s; flex-shrink: 0; }
-    .exp-details[open] summary::after { transform: rotate(90deg); }
-    .exp-details .exp-timeline-inner { margin-top: 1.25rem; }
-    .timeline-body-rich { font-size: 0.875rem; color: var(--muted); line-height: 1.75; }
+    .exp-item-summary::-webkit-details-marker { display: none; }
+    .exp-item-summary::marker { content: ''; }
+    .exp-item-summary-text { flex: 1; min-width: 0; }
+    .exp-item-summary .timeline-company { margin-bottom: 0; }
+    .exp-item-chevron {
+      flex-shrink: 0; width: 1.5rem; height: 1.5rem; display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: var(--accent); border: 1px solid rgba(0,212,255,0.25); border-radius: 6px;
+      margin-top: 0.15rem; transition: transform 0.2s, background 0.2s;
+    }
+    .exp-item-details[open] .exp-item-chevron { transform: rotate(90deg); background: rgba(0,212,255,0.06); }
+    .timeline-body-rich { font-size: 0.875rem; color: var(--muted); line-height: 1.75; padding-top: 0.75rem; }
     .timeline-body-rich p { margin-bottom: 0.75rem; }
     .timeline-body-rich p:last-child { margin-bottom: 0; }
     .timeline-body-rich ul { margin: 0.35rem 0 0.85rem 1.15rem; padding: 0; }
@@ -468,83 +472,143 @@
     <div class="container">
       <p class="section-label fade-in" data-i18n="exp_label">Journey</p>
       <h2 class="fade-in" data-i18n="exp_h2">Professional Experience</h2>
-      <details class="exp-details fade-in">
-        <summary data-i18n="exp_summary">Full professional experience (CV / PDF). Click to expand or minimize.</summary>
-        <div class="timeline exp-timeline-inner">
+      <div class="timeline">
         <div class="timeline-item fade-in">
-          <div class="timeline-header">
-            <div class="timeline-title" data-i18n="e1_title">Head of Data Science & AI</div>
-            <div class="timeline-period" data-i18n="e1_period">Jan 2022 · Present</div>
-          </div>
-          <div class="timeline-company" data-i18n="e1_co">Analysis</div>
-          <div class="timeline-body-rich" data-i18n-html="e1_body"></div>
-        </div>
-        <div class="timeline-item fade-in">
-          <div class="timeline-header">
-            <div class="timeline-title" data-i18n="e2_title">Head of Innovation and Modeling</div>
-            <div class="timeline-period" data-i18n="e2_period">Jan 2021 · Jan 2022</div>
-          </div>
-          <div class="timeline-company" data-i18n="e2_co">Analysis</div>
-          <div class="timeline-body-rich" data-i18n-html="e2_body"></div>
+          <details class="exp-item-details" open>
+            <summary class="exp-item-summary">
+              <div class="exp-item-summary-text">
+                <div class="timeline-header">
+                  <div class="timeline-title" data-i18n="e1_title">Head of Data Science & AI</div>
+                  <div class="timeline-period" data-i18n="e1_period">Jan 2022 · Present</div>
+                </div>
+                <div class="timeline-company" data-i18n="e1_co">Analysis</div>
+              </div>
+              <span class="exp-item-chevron" aria-hidden="true">▸</span>
+            </summary>
+            <div class="timeline-body-rich" data-i18n-html="e1_body"></div>
+          </details>
         </div>
         <div class="timeline-item fade-in">
-          <div class="timeline-header">
-            <div class="timeline-title" data-i18n="e3_title">Senior Analyst – Data Scientist</div>
-            <div class="timeline-period" data-i18n="e3_period">Dec 2019 · Dec 2020</div>
-          </div>
-          <div class="timeline-company" data-i18n="e3_co">TC · Rio de Janeiro, Brazil</div>
-          <div class="timeline-body-rich" data-i18n-html="e3_body"></div>
+          <details class="exp-item-details" open>
+            <summary class="exp-item-summary">
+              <div class="exp-item-summary-text">
+                <div class="timeline-header">
+                  <div class="timeline-title" data-i18n="e2_title">Head of Innovation and Modeling</div>
+                  <div class="timeline-period" data-i18n="e2_period">Jan 2021 · Jan 2022</div>
+                </div>
+                <div class="timeline-company" data-i18n="e2_co">Analysis</div>
+              </div>
+              <span class="exp-item-chevron" aria-hidden="true">▸</span>
+            </summary>
+            <div class="timeline-body-rich" data-i18n-html="e2_body"></div>
+          </details>
         </div>
         <div class="timeline-item fade-in">
-          <div class="timeline-header">
-            <div class="timeline-title" data-i18n="e4_title">Customer Relations Specialist</div>
-            <div class="timeline-period" data-i18n="e4_period">Jan 2019 · Dec 2019</div>
-          </div>
-          <div class="timeline-company" data-i18n="e4_co">TIM Brasil · Rio de Janeiro</div>
-          <div class="timeline-body-rich" data-i18n-html="e4_body"></div>
+          <details class="exp-item-details" open>
+            <summary class="exp-item-summary">
+              <div class="exp-item-summary-text">
+                <div class="timeline-header">
+                  <div class="timeline-title" data-i18n="e3_title">Senior Analyst – Data Scientist</div>
+                  <div class="timeline-period" data-i18n="e3_period">Dec 2019 · Dec 2020</div>
+                </div>
+                <div class="timeline-company" data-i18n="e3_co">TC · Rio de Janeiro, Brazil</div>
+              </div>
+              <span class="exp-item-chevron" aria-hidden="true">▸</span>
+            </summary>
+            <div class="timeline-body-rich" data-i18n-html="e3_body"></div>
+          </details>
         </div>
         <div class="timeline-item fade-in">
-          <div class="timeline-header">
-            <div class="timeline-title" data-i18n="e5_title">Senior Analyst</div>
-            <div class="timeline-period" data-i18n="e5_period">Jan 2016 · Feb 2018</div>
-          </div>
-          <div class="timeline-company" data-i18n="e5_co">Analysis</div>
-          <div class="timeline-body-rich" data-i18n-html="e5_body"></div>
+          <details class="exp-item-details" open>
+            <summary class="exp-item-summary">
+              <div class="exp-item-summary-text">
+                <div class="timeline-header">
+                  <div class="timeline-title" data-i18n="e4_title">Customer Relations Specialist</div>
+                  <div class="timeline-period" data-i18n="e4_period">Jan 2019 · Dec 2019</div>
+                </div>
+                <div class="timeline-company" data-i18n="e4_co">TIM Brasil · Rio de Janeiro</div>
+              </div>
+              <span class="exp-item-chevron" aria-hidden="true">▸</span>
+            </summary>
+            <div class="timeline-body-rich" data-i18n-html="e4_body"></div>
+          </details>
         </div>
         <div class="timeline-item fade-in">
-          <div class="timeline-header">
-            <div class="timeline-title" data-i18n="e6_title">Mid Data Science</div>
-            <div class="timeline-period" data-i18n="e6_period">Jul 2014 · Jan 2016</div>
-          </div>
-          <div class="timeline-company" data-i18n="e6_co">Analysis</div>
-          <div class="timeline-body-rich" data-i18n-html="e6_body"></div>
+          <details class="exp-item-details" open>
+            <summary class="exp-item-summary">
+              <div class="exp-item-summary-text">
+                <div class="timeline-header">
+                  <div class="timeline-title" data-i18n="e5_title">Senior Analyst</div>
+                  <div class="timeline-period" data-i18n="e5_period">Jan 2016 · Feb 2018</div>
+                </div>
+                <div class="timeline-company" data-i18n="e5_co">Analysis</div>
+              </div>
+              <span class="exp-item-chevron" aria-hidden="true">▸</span>
+            </summary>
+            <div class="timeline-body-rich" data-i18n-html="e5_body"></div>
+          </details>
         </div>
         <div class="timeline-item fade-in">
-          <div class="timeline-header">
-            <div class="timeline-title" data-i18n="e7_title">Junior Analyst</div>
-            <div class="timeline-period" data-i18n="e7_period">Jun 2013 · Jul 2014</div>
-          </div>
-          <div class="timeline-company" data-i18n="e7_co">Analysis</div>
-          <div class="timeline-body-rich" data-i18n-html="e7_body"></div>
+          <details class="exp-item-details" open>
+            <summary class="exp-item-summary">
+              <div class="exp-item-summary-text">
+                <div class="timeline-header">
+                  <div class="timeline-title" data-i18n="e6_title">Mid Data Science</div>
+                  <div class="timeline-period" data-i18n="e6_period">Jul 2014 · Jan 2016</div>
+                </div>
+                <div class="timeline-company" data-i18n="e6_co">Analysis</div>
+              </div>
+              <span class="exp-item-chevron" aria-hidden="true">▸</span>
+            </summary>
+            <div class="timeline-body-rich" data-i18n-html="e6_body"></div>
+          </details>
         </div>
         <div class="timeline-item fade-in">
-          <div class="timeline-header">
-            <div class="timeline-title" data-i18n="e8_title">Junior Technical Analyst</div>
-            <div class="timeline-period" data-i18n="e8_period">Jun 2012 · Jan 2013</div>
-          </div>
-          <div class="timeline-company" data-i18n="e8_co">Generali Brasil Seguros · Greater Rio de Janeiro</div>
-          <div class="timeline-body-rich" data-i18n-html="e8_body"></div>
+          <details class="exp-item-details" open>
+            <summary class="exp-item-summary">
+              <div class="exp-item-summary-text">
+                <div class="timeline-header">
+                  <div class="timeline-title" data-i18n="e7_title">Junior Analyst</div>
+                  <div class="timeline-period" data-i18n="e7_period">Jun 2013 · Jul 2014</div>
+                </div>
+                <div class="timeline-company" data-i18n="e7_co">Analysis</div>
+              </div>
+              <span class="exp-item-chevron" aria-hidden="true">▸</span>
+            </summary>
+            <div class="timeline-body-rich" data-i18n-html="e7_body"></div>
+          </details>
         </div>
         <div class="timeline-item fade-in">
-          <div class="timeline-header">
-            <div class="timeline-title" data-i18n="e9_title">Intern</div>
-            <div class="timeline-period" data-i18n="e9_period">Jun 2011 · Jun 2012</div>
-          </div>
-          <div class="timeline-company" data-i18n="e9_co">Generali Brasil Seguros</div>
-          <div class="timeline-body-rich" data-i18n-html="e9_body"></div>
+          <details class="exp-item-details" open>
+            <summary class="exp-item-summary">
+              <div class="exp-item-summary-text">
+                <div class="timeline-header">
+                  <div class="timeline-title" data-i18n="e8_title">Junior Technical Analyst</div>
+                  <div class="timeline-period" data-i18n="e8_period">Jun 2012 · Jan 2013</div>
+                </div>
+                <div class="timeline-company" data-i18n="e8_co">Generali Brasil Seguros · Greater Rio de Janeiro</div>
+              </div>
+              <span class="exp-item-chevron" aria-hidden="true">▸</span>
+            </summary>
+            <div class="timeline-body-rich" data-i18n-html="e8_body"></div>
+          </details>
         </div>
+        <div class="timeline-item fade-in">
+          <details class="exp-item-details" open>
+            <summary class="exp-item-summary">
+              <div class="exp-item-summary-text">
+                <div class="timeline-header">
+                  <div class="timeline-title" data-i18n="e9_title">Intern</div>
+                  <div class="timeline-period" data-i18n="e9_period">Jun 2011 · Jun 2012</div>
+                </div>
+                <div class="timeline-company" data-i18n="e9_co">Generali Brasil Seguros</div>
+              </div>
+              <span class="exp-item-chevron" aria-hidden="true">▸</span>
+            </summary>
+            <div class="timeline-body-rich" data-i18n-html="e9_body"></div>
+          </details>
         </div>
-      </details>
+      </div>
     </div>
   </section>
 
@@ -685,7 +749,6 @@
         p3_title:'Dataframe Analytics Agent', p3_desc:'LLM via LangChain delivering analytical insights directly on WhatsApp and Microsoft Teams. Decisions that took days become real-time actions for managers.', p3_impact:'Days-long decisions become real-time actions',
         p4_title:'Telecom Sales & Recommendation Agent', p4_desc:'System combining LLM with a recommendation engine to generate personalized offers at scale for telecom customers. Maximizes cross-sell and up-sell opportunities.', p4_impact:'Personalized offers at scale',
         exp_label:'Journey', exp_h2:'Professional Experience',
-        exp_summary:'Full professional experience (CV / PDF). Click to expand or minimize.',
         e1_title:'Head of Data Science & AI', e1_period:'Jan 2022 · Present', e1_co:'Analysis',
         e1_body:'<p>Led a 25-person multidisciplinary Data Science &amp; AI team, managing full-cycle delivery of predictive modeling, LLMOps pipelines, and AI Agents for enterprise clients in telecom, oil &amp; gas, and retail.</p><p><strong>Business Impact</strong></p><ul><li><strong>Revenue Recovery:</strong> Identified over $40M+ USD in billing gaps across B2B and B2C telecom clients, utilizing Machine Learning for large-scale billing audits.</li><li><strong>Operational Efficiency:</strong> Reduced customer delinquency by 15% and churn by 10% via ML-driven contact optimization and propensity modeling.</li><li><strong>Pipeline Automation:</strong> Re-engineered data pipelines, reducing processing time from 1.5 days to 3 hours (95% reduction) and compressing ML delivery cycles by 50%.</li><li><strong>Strategic Partnerships:</strong> Delivered fraud detection models for the Federal Revenue Service in partnership with SERPRO and SAS.</li></ul><p><strong>AI Agents (Production)</strong></p><ul><li>B2B Contract Intelligence Agent (LlamaIndex + Hallucination Validation): 75% reduction in contract review time, lower compliance risks.</li><li>Data Science Ecosystem Agent (Multi-agent LangChain): Python code generation, MLOps pipeline structuring, log validation; 50% faster time-to-market.</li><li>Dataframe Analytics Agent (LLMs via LangChain to WhatsApp/Teams): real-time executive insights from days-long manual analysis.</li><li>Telecom Sales &amp; Recommendation Agent: LLMs with recommendation systems for personalized offers at scale.</li></ul><p><strong>Stack:</strong> Python · LangChain · LlamaIndex · CrewAI · RAG · LoRA fine-tuning · MLOps · Docker · Kubernetes · AKS · SAS · SQL · R</p>',
         e2_title:'Head of Innovation and Modeling', e2_period:'Jan 2021 · Jan 2022', e2_co:'Analysis',
@@ -737,7 +800,6 @@
         p3_title:'Dataframe Analytics Agent', p3_desc:'LLM via LangChain que entrega insights analíticos diretamente no WhatsApp e Microsoft Teams. Decisões que levavam dias tornam-se ações em tempo real para gestores.', p3_impact:'Decisões de dias viram ações em tempo real',
         p4_title:'Telecom Sales & Recommendation Agent', p4_desc:'Sistema que combina LLM com motor de recomendação para gerar ofertas personalizadas em escala para clientes de telecomunicações.', p4_impact:'Ofertas personalizadas em escala',
         exp_label:'Trajetória', exp_h2:'Experiência Profissional',
-        exp_summary:'Experiência profissional completa (CV / PDF). Clique para expandir ou minimizar.',
         e1_title:'Head of Data Science & AI', e1_period:'Jan 2022 · Atual', e1_co:'Analysis',
         e1_body:'<p>Liderei um time multidisciplinar de 25 pessoas em Data Science &amp; IA, com entrega de ponta a ponta de modelagem preditiva, pipelines LLMOps e agentes de IA para clientes em telecom, petróleo &amp; gás e varejo.</p><p><strong>Impacto de negócio</strong></p><ul><li><strong>Recuperação de receita:</strong> Mais de US$ 40M+ em gaps de faturamento B2B/B2C em telecom, com ML em auditorias em escala.</li><li><strong>Eficiência operacional:</strong> Inadimplência -15% e churn -10% com otimização de contato e modelos de propensão.</li><li><strong>Automação de pipelines:</strong> Processamento de 1,5 dias para 3 horas (95%) e ciclos de entrega de ML -50%.</li><li><strong>Parcerias:</strong> Modelos de fraude para a Receita Federal com SERPRO e SAS.</li></ul><p><strong>Agentes de IA (produção)</strong></p><ul><li>B2B Contract Intelligence (LlamaIndex + validação de alucinações): -75% tempo de revisão.</li><li>Data Science Ecosystem Agent (LangChain multiagente): código Python, MLOps, validação de logs; -50% time-to-market.</li><li>Dataframe Analytics Agent (WhatsApp/Teams): insights em tempo real.</li><li>Telecom Sales &amp; Recommendation: ofertas personalizadas em escala.</li></ul><p><strong>Stack:</strong> Python · LangChain · LlamaIndex · CrewAI · RAG · LoRA · MLOps · Docker · Kubernetes · AKS · SAS · SQL · R</p>',
         e2_title:'Head of Innovation and Modeling', e2_period:'Jan 2021 · Jan 2022', e2_co:'Analysis',
@@ -789,7 +851,6 @@
         p3_title:'Dataframe Analytics Agent', p3_desc:'LLM vía LangChain que entrega insights analíticos directamente en WhatsApp y Microsoft Teams. Decisiones que tardaban días se convierten en acciones en tiempo real.', p3_impact:'Decisiones de días se vuelven acciones en tiempo real',
         p4_title:'Telecom Sales & Recommendation Agent', p4_desc:'Sistema que combina LLM con motor de recomendación para generar ofertas personalizadas a escala para clientes de telecomunicaciones.', p4_impact:'Ofertas personalizadas a escala',
         exp_label:'Trayectoria', exp_h2:'Experiencia Profesional',
-        exp_summary:'Experiencia profesional completa (CV / PDF). Pulse para expandir o minimizar.',
         e1_title:'Head of Data Science & AI', e1_period:'Ene 2022 · Actual', e1_co:'Analysis',
         e1_body:'<p>Lideré un equipo multidisciplinario de 25 personas en Data Science e IA, con entrega de extremo a extremo de modelado predictivo, pipelines LLMOps y agentes de IA para clientes en telecom, petróleo &amp; gas y retail.</p><p><strong>Impacto en el negocio</strong></p><ul><li><strong>Recuperación de ingresos:</strong> Más de US$ 40M+ en brechas de facturación B2B/B2C con ML a escala.</li><li><strong>Eficiencia:</strong> Morosidad -15% y churn -10% con optimización de contacto.</li><li><strong>Automatización:</strong> Procesamiento de 1,5 días a 3 horas (95%) y ciclos de entrega ML -50%.</li><li><strong>Alianzas:</strong> Modelos de fraude para la Receita Federal con SERPRO y SAS.</li></ul><p><strong>Agentes de IA (producción)</strong></p><ul><li>B2B Contract Intelligence (LlamaIndex + validación): -75% tiempo de revisión.</li><li>Data Science Ecosystem Agent (LangChain multiagente): código Python, MLOps, logs; -50% time-to-market.</li><li>Dataframe Analytics Agent (WhatsApp/Teams): insights en tiempo real.</li><li>Telecom Sales &amp; Recommendation: ofertas personalizadas a escala.</li></ul><p><strong>Stack:</strong> Python · LangChain · LlamaIndex · CrewAI · RAG · LoRA · MLOps · Docker · Kubernetes · AKS · SAS · SQL · R</p>',
         e2_title:'Head of Innovation and Modeling', e2_period:'Ene 2021 · Ene 2022', e2_co:'Analysis',
